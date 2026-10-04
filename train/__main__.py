@@ -358,6 +358,8 @@ def main() -> None:
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    if preset.get("model") == "csp":
+        from paw_baseline.csp import configuration_csp  # noqa: F401
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None

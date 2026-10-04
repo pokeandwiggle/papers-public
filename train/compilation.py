@@ -28,12 +28,12 @@ def training_compilation(model: str | None):
 
 @contextmanager
 def training_policy_precision(trainer, model: str | None):
-    """Keep Diffusion FP32 matmuls at highest precision after trainer setup.
+    """Keep Diffusion (and CSP, its comparison arm) FP32 matmuls at highest precision.
 
     LeRobot enables TF32 before calling its policy factory. Apply the precision
     after that setup and before the first lazy compiled forward/backward.
     """
-    if model != "diffusion":
+    if model not in ("diffusion", "csp"):
         yield
         return
     import torch

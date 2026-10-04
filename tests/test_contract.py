@@ -33,6 +33,7 @@ def test_presets_cover_all_models():
     presets = sorted(p.stem for p in (BASELINE / "configs").glob("*.json"))
     assert presets == [
         "act",
+        "csp",
         "diffusion",
         "multi_task_dit",
         "pi05",

@@ -1,0 +1,18 @@
+{
+  "model": "csp",
+  "epochs": 25,
+  "min_steps": 200000,
+  "train_all_episodes": true,
+  "notes": "Causal Spectral Policy (arXiv:2606.29570): two BAKU-style GPT stages regress DCT coefficients of a 32-step absolute TCP chunk, the lowest 8 coefficients (and time-domain gripper widths) first and the remaining high frequencies conditioned on the stop-gradient low prediction. Perception, normalization, chunking and training budget match the diffusion preset.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=32",
+    "--policy.type=csp",
+    "--policy.drop_n_last_frames=0",
+    "--policy.horizon=32",
+    "--policy.n_action_steps=32",
+    "--policy.n_obs_steps=1",
+    "--policy.n_low_freq=8",
+    "--save_freq=5000"
+  ]
+}
