@@ -1,0 +1,18 @@
+{
+  "model": "paw_oft",
+  "train_all_episodes": true,
+  "notes": "ActionMap: identical OpenVLA-OFT recipe with the L1 head replaced by the voxel heatmap head (per arm 48^3 translation and 16^3 rotation grids over [-1.2, 1.2], Gaussian sigma 0.1, soft-label cross-entropy, binary gripper; top-10 soft-argmax decoding at temperature 1).",
+  "args": [
+    "--policy.type=paw_oft",
+    "--policy.action_head=heatmap",
+    "--policy.device=cuda",
+    "--policy.chunk_size=32",
+    "--policy.n_action_steps=32",
+    "--policy.grad_accum_steps=2",
+    "--batch_size=16",
+    "--num_workers=8",
+    "--steps=4000",
+    "--save_freq=2000",
+    "--log_freq=20"
+  ]
+}

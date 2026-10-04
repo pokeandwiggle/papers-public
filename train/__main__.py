@@ -26,6 +26,7 @@ from paw_baseline.serving_metadata import (
     write_serving_metadata,
 )
 
+from train.accumulation import gradient_accumulation
 from train.compilation import training_compilation, training_policy_precision
 from train.image_transforms import (
     JPEG_CONFIG_PATH,
@@ -261,6 +262,15 @@ def main() -> None:
             normalization_episodes=split.train,
             visual_stats_profile=visual_stats_profile,
         )
+        oft_stats_path = None
+        if preset.get("model") == "paw_oft":
+            from paw_baseline.oft.prepare import write_oft_statistics
+
+            reserved_oft = {"policy.oft_stats", "policy.stats_path", "policy.type"}
+            bad = reserved_oft.intersection(args.params.get("overrides", {}))
+            if bad:
+                raise ValueError(f"OFT overrides cannot replace {sorted(bad)}")
+            oft_stats_path = write_oft_statistics(prepared.root, split.train)
         if preset.get("model") == "paw_pi05":
             from paw_baseline.pi05.prepare import prepare_pi05
 
@@ -298,6 +308,9 @@ def main() -> None:
         data_manifest["pi05"] = json.loads(
             (prepared.root / ".paw/prepare.json").read_text()
         )["pi05"]
+    if oft_stats_path is not None:
+        data_manifest["oft_stats"] = json.loads(oft_stats_path.read_text())["stats"]
+        passthrough.append(f"--policy.stats_path={oft_stats_path}")
     data_manifest["prepared_stats_sha256"] = hashlib.sha256(
         (prepared.root / "meta/stats.json").read_bytes()
     ).hexdigest()
@@ -358,6 +371,14 @@ def main() -> None:
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    if preset.get("model") == "paw_oft":
+        from paw_baseline.oft import (  # noqa: F401
+            configuration_paw_oft,
+            processor_paw_oft,
+        )
+
+    effective = dict(arg[2:].split("=", 1) for arg in lerobot_argv)
+    grad_accum_steps = int(effective.get("policy.grad_accum_steps", "1"))
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None
@@ -390,6 +411,7 @@ def main() -> None:
         training_compilation(preset.get("model")),
         training_image_transforms(lerobot_train, jpeg_quality),
         training_policy_precision(lerobot_train, preset.get("model")),
+        gradient_accumulation(lerobot_train, grad_accum_steps),
     ):
         lerobot_train.main()
 

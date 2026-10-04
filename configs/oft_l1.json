@@ -1,0 +1,18 @@
+{
+  "model": "paw_oft",
+  "train_all_episodes": true,
+  "notes": "OpenVLA-OFT control: OpenVLA-7B with rank-32 LoRA, parallel decoding of 32x14 action tokens, three cameras and a proprio token, and its L1 regression head on normalized per-step delta actions. Global batch 64 (4 GPUs x 16), constant LR 5e-4, 4000 steps as in ActionMap's real-robot setup.",
+  "args": [
+    "--policy.type=paw_oft",
+    "--policy.action_head=l1",
+    "--policy.device=cuda",
+    "--policy.chunk_size=32",
+    "--policy.n_action_steps=32",
+    "--policy.grad_accum_steps=2",
+    "--batch_size=16",
+    "--num_workers=8",
+    "--steps=4000",
+    "--save_freq=2000",
+    "--log_freq=20"
+  ]
+}
