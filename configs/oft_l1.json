@@ -1,0 +1,20 @@
+{
+  "model": "paw_oft",
+  "train_all_episodes": true,
+  "global_batch_size": 64,
+  "notes": "OpenVLA-OFT (OpenVLA-7B, LoRA r32, parallel decoding, proprio, 3 cameras) with its L1 regression head on per-step delta TCP actions; 16-step chunks at 30 Hz. Effective batch 64 needs 4 GPUs at batch_size 16.",
+  "args": [
+    "--batch_size=16",
+    "--num_workers=12",
+    "--policy.type=paw_oft",
+    "--policy.action_head=l1",
+    "--policy.chunk_size=16",
+    "--policy.n_action_steps=16",
+    "--policy.device=cuda",
+    "--policy.gradient_checkpointing=true",
+    "--dataset.image_transforms.enable=false",
+    "--steps=4000",
+    "--save_freq=2000",
+    "--log_freq=50"
+  ]
+}

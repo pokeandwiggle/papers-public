@@ -1,0 +1,20 @@
+{
+  "model": "paw_oft",
+  "train_all_episodes": true,
+  "global_batch_size": 64,
+  "notes": "OpenVLA-OFT with the ActionMap voxel heatmap head (48^3 translation, 16^3 rotation, sigma 0.1, 2-sigma padding, top-10 soft-argmax) replacing the L1 head; otherwise identical to oft_l1.",
+  "args": [
+    "--batch_size=16",
+    "--num_workers=12",
+    "--policy.type=paw_oft",
+    "--policy.action_head=heatmap",
+    "--policy.chunk_size=16",
+    "--policy.n_action_steps=16",
+    "--policy.device=cuda",
+    "--policy.gradient_checkpointing=true",
+    "--dataset.image_transforms.enable=false",
+    "--steps=4000",
+    "--save_freq=2000",
+    "--log_freq=50"
+  ]
+}

@@ -284,6 +284,33 @@ def main() -> None:
             )
             horizon = int(effective.get("policy.chunk_size", "50"))
             prepared = prepare_pi05(prepared, horizon)
+        if preset.get("model") == "paw_oft":
+            from paw_baseline.oft.prepare import write_oft_stats
+
+            reserved_oft = {"policy.norm_stats", "policy.stats_path", "policy.type"}
+            bad = reserved_oft.intersection(args.params.get("overrides", {}))
+            if bad:
+                raise ValueError(
+                    f"OFT overrides cannot replace normalization fields: {sorted(bad)}"
+                )
+            effective = dict(
+                arg[2:].split("=", 1) for arg in merge_args(preset["args"], passthrough)
+            )
+            horizon = int(effective["policy.chunk_size"])
+            # OFT's recipe fixes the global batch; refuse silent GPU-count changes.
+            global_batch = preset.get("global_batch_size")
+            world_size = int(os.environ.get("WORLD_SIZE", "1"))
+            if (
+                global_batch is not None
+                and "batch_size" not in args.params.get("overrides", {})
+                and int(effective["batch_size"]) * world_size != global_batch
+            ):
+                raise ValueError(
+                    f"{model} needs a global batch of {global_batch}: batch_size "
+                    f"{effective['batch_size']} x {world_size} GPUs"
+                )
+            stats_path = write_oft_stats(prepared.root, split.train, horizon)
+            passthrough.append(f"--policy.stats_path={stats_path}")
 
     data_manifest = training_manifest(
         args.dataset, split, visual_stats_profile=visual_stats_profile
@@ -357,6 +384,11 @@ def main() -> None:
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
+        )
+    if preset.get("model") == "paw_oft":
+        from paw_baseline.oft import (  # noqa: F401
+            configuration_paw_oft,
+            processor_paw_oft,
         )
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)

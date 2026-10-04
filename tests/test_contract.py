@@ -35,6 +35,8 @@ def test_presets_cover_all_models():
         "act",
         "diffusion",
         "multi_task_dit",
+        "oft_actionmap",
+        "oft_l1",
         "pi05",
         "smolvla",
     ]
