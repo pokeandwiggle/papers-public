@@ -1,0 +1,48 @@
+[project]
+name = "paw-baseline"
+version = "0.1.0"
+description = "Train, serve, and validate LeRobot policies."
+requires-python = ">=3.12"
+dependencies = [
+    # Keep training and inference on the same CUDA and compatible PyTorch stack.
+    "lerobot[async,dataset,molmoact2,multi-task-dit,peft,pi,smolvla,training]==0.6.1",
+    "paw-policy-toolkit",
+    "pyarrow>=17",
+    "torch==2.11.0",
+    # CPU wheel: video decoding uses PyAV; CUDA decoding would also require NPP.
+    "torchcodec==0.11.1",
+    "torchvision==0.26.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[tool.paw-ais]
+contract-version = 1
+
+[tool.paw-ais.entrypoints]
+serve = ["python", "-m", "inference.serve"]
+validate = ["python", "-m", "inference.validate"]
+
+[tool.pytest.ini_options]
+markers = [
+    "e2e: full train → serve → validate pipeline on CPU (minutes, not seconds)",
+]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+paw-policy-toolkit = { path = "_vendor/paw-policy-toolkit" }
+
+torch = { index = "pytorch-cu128", marker = "sys_platform == 'linux'" }
+torchvision = { index = "pytorch-cu128", marker = "sys_platform == 'linux'" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

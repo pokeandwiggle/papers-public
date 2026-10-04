@@ -1,0 +1,22 @@
+{
+  "model": "diffusion",
+  "epochs": 25,
+  "min_steps": 200000,
+  "train_all_episodes": true,
+  "notes": "LeRobot Diffusion Policy trained from scratch with absolute TCP actions, MIN_MAX normalization, and one observation per chunk.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=32",
+    "--policy.compile_mode=default",
+    "--policy.compile_model=true",
+    "--policy.drop_n_last_frames=0",
+    "--policy.horizon=32",
+    "--policy.n_action_steps=32",
+    "--policy.n_obs_steps=1",
+    "--policy.noise_scheduler_type=DDIM",
+    "--policy.num_inference_steps=16",
+    "--policy.num_train_timesteps=100",
+    "--policy.type=diffusion",
+    "--save_freq=5000"
+  ]
+}

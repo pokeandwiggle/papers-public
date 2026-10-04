@@ -1,0 +1,17 @@
+{
+  "model": "act",
+  "train_all_episodes": true,
+  "epochs": 3,
+  "min_steps": 100000,
+  "notes": "LeRobot ACT trained from scratch with absolute TCP actions and MEAN_STD normalization.",
+  "args": [
+    "--batch_size=8",
+    "--dataset.image_transforms.enable=true",
+    "--num_workers=32",
+    "--policy.chunk_size=32",
+    "--policy.n_action_steps=32",
+    "--policy.optimizer_lr=4e-5",
+    "--policy.type=act",
+    "--save_freq=1000"
+  ]
+}

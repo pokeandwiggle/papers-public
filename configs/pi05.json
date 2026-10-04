@@ -1,0 +1,27 @@
+{
+  "model": "paw_pi05",
+  "train_all_episodes": true,
+  "notes": "Fine-tune LeRobot PI05 with absolute TCP actions. Encode rotations as matrix columns and grippers as closed fractions.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=32",
+    "--policy.type=paw_pi05",
+    "--policy.chunk_size=32",
+    "--policy.compile_model=true",
+    "--policy.compile_mode=default",
+    "--policy.device=cuda",
+    "--policy.dtype=bfloat16",
+    "--policy.freeze_vision_encoder=true",
+    "--policy.gradient_checkpointing=true",
+    "--policy.n_action_steps=32",
+    "--policy.optimizer_lr=5e-5",
+    "--policy.optimizer_weight_decay=1e-10",
+    "--policy.scheduler_warmup_steps=500",
+    "--policy.base_repo=lerobot/pi05_base",
+    "--policy.base_revision=b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+    "--policy.use_amp=false",
+    "--save_freq=2000"
+  ],
+  "epochs": 3,
+  "min_steps": 10000
+}
