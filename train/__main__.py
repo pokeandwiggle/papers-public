@@ -283,7 +283,10 @@ def main() -> None:
                 arg[2:].split("=", 1) for arg in merge_args(preset["args"], passthrough)
             )
             horizon = int(effective.get("policy.chunk_size", "50"))
-            prepared = prepare_pi05(prepared, horizon)
+            relative = json.loads(effective.get("policy.use_relative_actions", "false"))
+            if type(relative) is not bool:
+                raise ValueError("policy.use_relative_actions must be a boolean")
+            prepared = prepare_pi05(prepared, horizon, relative=relative)
 
     data_manifest = training_manifest(
         args.dataset, split, visual_stats_profile=visual_stats_profile

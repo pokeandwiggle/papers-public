@@ -125,6 +125,48 @@ def _squashed_arms(checkpoint: Path) -> set[str]:
     return result
 
 
+def _processor_steps(checkpoint: Path, name: str, registry_name: str) -> list[dict]:
+    path = checkpoint / name
+    if not path.exists():
+        raise RuntimeError(f"checkpoint lacks saved processor config: {path}")
+    return [
+        step
+        for step in json.loads(path.read_text()).get("steps", [])
+        if step.get("registry_name") == registry_name
+    ]
+
+
+def _require_pi05_action_frame(checkpoint: Path, native: dict, pi05: dict) -> None:
+    """Relative checkpoints must restore absolute targets before emitting."""
+    from paw_baseline.pi05.geometry import relative_action_mask
+
+    relative = pi05.get("relative_actions")
+    if relative is not None and relative != {
+        "mask": list(relative_action_mask()),
+        "reference": "anchor_observation_state",
+    }:
+        raise RuntimeError("unsupported PI05 relative action contract")
+    if bool(native.get("use_relative_actions", False)) != (relative is not None):
+        raise RuntimeError("PI05 relative action config and statistics disagree")
+    if relative is None:
+        return
+    to_relative = _processor_steps(
+        checkpoint, "policy_preprocessor.json", "relative_actions_processor"
+    )
+    to_absolute = _processor_steps(
+        checkpoint, "policy_postprocessor.json", "absolute_actions_processor"
+    )
+    if (
+        len(to_relative) != 1
+        or len(to_absolute) != 1
+        or to_relative[0].get("config", {}).get("enabled") is not True
+        or to_absolute[0].get("config", {}).get("enabled") is not True
+    ):
+        raise RuntimeError(
+            "relative PI05 checkpoint must convert actions back to absolute poses"
+        )
+
+
 def _require_rotation_convention(metadata: dict) -> None:
     if metadata.get("rotation_convention") != ROTATION_CONVENTION:
         raise RuntimeError(
@@ -165,6 +207,7 @@ def load_serving_metadata(checkpoint: Path) -> dict:
             or native.get("chunk_size") != metadata["pi05"]["chunk_size"]
         ):
             raise RuntimeError("PI05 model configuration and serving metadata disagree")
+        _require_pi05_action_frame(checkpoint, native, metadata["pi05"])
         expected = set() if metadata["frozen_arm"] is None else {metadata["frozen_arm"]}
         if _squashed_arms(checkpoint) != expected:
             raise RuntimeError("PI05 frozen-arm metadata/statistics disagree")

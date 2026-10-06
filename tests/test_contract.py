@@ -36,6 +36,8 @@ def test_presets_cover_all_models():
         "diffusion",
         "multi_task_dit",
         "pi05",
+        "pi05_delta",
+        "pi05_delta_ln",
         "smolvla",
     ]
 

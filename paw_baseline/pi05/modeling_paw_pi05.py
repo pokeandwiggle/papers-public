@@ -9,7 +9,22 @@ from lerobot.configs import PreTrainedConfig
 from lerobot.policies.pi05.modeling_pi05 import PI05Policy
 from safetensors.torch import load_file
 
-from paw_baseline.pi05.configuration_paw_pi05 import PawPI05Config
+from paw_baseline.pi05.configuration_paw_pi05 import (
+    TIME_SAMPLING_LOGIT_NORMAL,
+    PawPI05Config,
+)
+
+
+def sample_time_logit_normal(
+    bsize: int, device, *, location: float, scale: float
+) -> torch.Tensor:
+    """FACT logit-normal timesteps: clip(sigmoid(scale * z - location), 1e-3, 1 - 1e-3).
+
+    Uses the openpi convention x_t = t * noise + (1 - t) * actions, so a positive
+    location concentrates training on the low-noise (t -> 0) regime.
+    """
+    z = torch.randn(bsize, dtype=torch.float32, device=device)
+    return torch.sigmoid(scale * z - location).clamp(0.001, 0.999)
 
 
 def load_strict_weights(model, path: Path) -> None:
@@ -60,6 +75,15 @@ class PawPI05Policy(PI05Policy):
             else _weights_path
         )
         super().__init__(config, **kwargs)
+        if config.paw_time_sampling == TIME_SAMPLING_LOGIT_NORMAL:
+            # Training-only: PI05Policy.forward draws times through this hook,
+            # outside the compiled model forward. Sampling is unchanged.
+            self.model.sample_time = lambda bsize, device: sample_time_logit_normal(
+                bsize,
+                device,
+                location=config.paw_ln_location,
+                scale=config.paw_ln_scale,
+            )
         if config.compile_model:
             # Native PI05 enables TF32 when compiling. Keep the conservative
             # precision default; serving can still explicitly override it after load.

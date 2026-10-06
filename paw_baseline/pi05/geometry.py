@@ -8,6 +8,15 @@ from paw_baseline.rotations import canonical_flat16
 
 LAYOUT = "pi05-absolute-tcp20-v1"
 ROTATION_CONVENTION = "rotation-matrix-first-two-columns-v1"
+CLOSED_FRACTION_DIMS = (9, 19)
+
+
+def relative_action_mask() -> tuple[bool, ...]:
+    """State-relative dims: xyz and rotation columns; closed fractions stay absolute.
+
+    Mirrors FACT's openpi DeltaActions mask, ee_pos(3) + rot6(6) per arm.
+    """
+    return tuple(dim not in CLOSED_FRACTION_DIMS for dim in range(20))
 
 
 def matrix_to_columns(matrix: np.ndarray) -> np.ndarray:

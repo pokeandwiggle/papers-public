@@ -52,7 +52,8 @@ def test_policy_load_preserves_conservative_compile_precision(
     try:
         torch.set_float32_matmul_precision("highest")
         model.PawPI05Policy(
-            SimpleNamespace(compile_model=compile_model), _weights_path=Path("unused")
+            SimpleNamespace(compile_model=compile_model, paw_time_sampling="beta"),
+            _weights_path=Path("unused"),
         )
         assert torch.get_float32_matmul_precision() == "highest"
     finally:

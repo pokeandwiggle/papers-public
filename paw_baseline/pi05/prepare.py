@@ -9,7 +9,13 @@ from pathlib import Path
 import numpy as np
 import pyarrow.parquet as pq
 
-from paw_baseline.pi05.geometry import LAYOUT, ROTATION_CONVENTION, Pi05Representation
+from paw_baseline.pi05.geometry import (
+    CLOSED_FRACTION_DIMS,
+    LAYOUT,
+    ROTATION_CONVENTION,
+    Pi05Representation,
+    relative_action_mask,
+)
 from paw_baseline.prepare import (
     PROVENANCE_PATH,
     PreparedDataset,
@@ -20,32 +26,49 @@ from paw_baseline.prepare import (
 from paw_baseline.representation import MODEL_ROTATION_DIMS, decode_model
 
 
-def chunk_action_values(action, episodes, selected_episodes, horizon):
+def chunk_action_values(
+    action, episodes, selected_episodes, horizon, *, state=None, relative=False
+):
     """Fit uniform LeRobot chunk targets with last-frame padding at episode ends.
 
     PI05 includes padded targets in its loss, so they enter the distribution.
-    Only selected training episodes contribute to normalization.
+    Only selected training episodes contribute to normalization. With
+    ``relative``, targets are the openpi DeltaActions view used in training:
+    every encoded chunk action minus the encoded anchor state on the masked dims.
     """
     if type(horizon) is not int or horizon < 1:
         raise ValueError("chunk horizon must be positive")
+    if relative and state is None:
+        raise ValueError("relative chunk targets require the anchor states")
     count = np.isin(episodes, list(selected_episodes)).sum()
     values = np.empty((count * horizon, 20), dtype=np.float32)
     cursor = 0
     representation = Pi05Representation()
+    mask = np.asarray(relative_action_mask())
     for episode in sorted(selected_episodes):
         rows = np.flatnonzero(episodes == episode)
         for first in range(0, len(rows), 1024):
             anchors = np.arange(first, min(first + 1024, len(rows)))
             targets = np.minimum(anchors[:, None] + np.arange(horizon), len(rows) - 1)
             encoded = representation.encode(action[rows[targets]])
+            if relative:
+                anchor_state = representation.encode(state[rows[anchors]])
+                encoded[..., mask] -= anchor_state[:, None, mask]
             flat = encoded.reshape(-1, 20)
             values[cursor : cursor + len(flat)] = flat
             cursor += len(flat)
     return values
 
 
-def prepare_pi05(base: PreparedDataset, horizon: int) -> PreparedDataset:
-    """Materialize absolute PI05 poses and fit statistics on training chunks."""
+def prepare_pi05(
+    base: PreparedDataset, horizon: int, *, relative: bool = False
+) -> PreparedDataset:
+    """Materialize absolute PI05 poses and fit statistics on training chunks.
+
+    Stored actions stay absolute. With ``relative``, the policy's processors
+    subtract the anchor state before normalization, so action statistics are
+    fitted on those state-relative chunk targets instead.
+    """
     representation = Pi05Representation()
     provenance = json.loads((base.root / PROVENANCE_PATH).read_text())
     contract = {
@@ -53,6 +76,11 @@ def prepare_pi05(base: PreparedDataset, horizon: int) -> PreparedDataset:
         "chunk_size": horizon,
         "version": 2,
     }
+    if relative:
+        contract["relative_actions"] = {
+            "mask": list(relative_action_mask()),
+            "reference": "anchor_observation_state",
+        }
     digest = hashlib.sha256(json.dumps(contract, sort_keys=True).encode()).hexdigest()[
         :16
     ]
@@ -93,19 +121,22 @@ def prepare_pi05(base: PreparedDataset, horizon: int) -> PreparedDataset:
         state, action = np.concatenate(states), np.concatenate(actions)
         episodes = np.concatenate(episode_indices)
         fit = set(provenance["normalization_episode_indices"])
-        values = chunk_action_values(action, episodes, fit, horizon)
+        values = chunk_action_values(
+            action, episodes, fit, horizon, state=state, relative=relative
+        )
         stats = json.loads((stage / "meta/stats.json").read_text())
         stats["observation.state"] = _vector_stats(
             representation.encode(state[np.isin(episodes, list(fit))])
         )
         stats["action"] = _vector_stats(values)
-        # Preserve rotations and fractions in their known domains. Fitting a tiny
-        # rotation coordinate range would amplify sensor noise.
+        # Preserve absolute rotations and fractions in their known domains. Fitting
+        # a tiny rotation coordinate range would amplify sensor noise. Relative
+        # rotation offsets are fitted like positions, as FACT's openpi stats are.
         for key in ("observation.state", "action"):
-            for dims, low, high in [
-                (MODEL_ROTATION_DIMS, -1.0, 1.0),
-                ((9, 19), 0.0, 1.0),
-            ]:
+            fixed_domains = [(CLOSED_FRACTION_DIMS, 0.0, 1.0)]
+            if key == "observation.state" or not relative:
+                fixed_domains.append((MODEL_ROTATION_DIMS, -1.0, 1.0))
+            for dims, low, high in fixed_domains:
                 for dim in dims:
                     for name, value in {
                         "min": low,
