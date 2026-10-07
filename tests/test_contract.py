@@ -35,9 +35,22 @@ def test_presets_cover_all_models():
         "act",
         "diffusion",
         "multi_task_dit",
+        "patch_vqbet_cls",
+        "patch_vqbet_dense",
         "pi05",
         "smolvla",
     ]
+
+
+def test_patch_vqbet_presets_differ_only_in_visual_feature():
+    dense = json.loads((BASELINE / "configs" / "patch_vqbet_dense.json").read_text())
+    cls = json.loads((BASELINE / "configs" / "patch_vqbet_cls.json").read_text())
+    assert set(dense["args"]) ^ set(cls["args"]) == {
+        "--policy.visual_feature=patch",
+        "--policy.visual_feature=cls",
+    }
+    assert dense["model"] == cls["model"] == "patch_vqbet"
+    assert dense["train_all_episodes"] is cls["train_all_episodes"] is True
 
 
 def test_multi_task_dit_is_paw_like_flow_matching_preset():

@@ -358,6 +358,9 @@ def main() -> None:
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    if preset.get("model") == "patch_vqbet":
+        from train.patch_policy import configuration_patch_vqbet  # noqa: F401
+    from train.patch_policy.training import tokenizer_fit
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None
@@ -390,6 +393,7 @@ def main() -> None:
         training_compilation(preset.get("model")),
         training_image_transforms(lerobot_train, jpeg_quality),
         training_policy_precision(lerobot_train, preset.get("model")),
+        tokenizer_fit(lerobot_train, preset.get("model")),
     ):
         lerobot_train.main()
 

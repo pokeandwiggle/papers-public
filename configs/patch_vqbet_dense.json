@@ -1,0 +1,27 @@
+{
+  "model": "patch_vqbet",
+  "train_all_episodes": true,
+  "notes": "Patch Policy (VQ-BeT head) over frozen DINOv2 ViT-S/14 patch tokens of all cameras, block-causal over a 2-frame image history (frames 3 steps apart). Images only. Predicts 30-step chunks; serving replans every 3 observations. Identical to patch_vqbet_cls except for the visual feature.",
+  "args": [
+    "--policy.type=patch_vqbet",
+    "--policy.visual_feature=patch",
+    "--policy.device=cuda",
+    "--policy.n_obs_steps=2",
+    "--policy.obs_stride=3",
+    "--policy.chunk_size=30",
+    "--policy.n_action_steps=30",
+    "--policy.replan_every=3",
+    "--policy.vqvae_n_embed=64",
+    "--policy.vqvae_groups=2",
+    "--policy.vqvae_hidden_dim=512",
+    "--policy.vqvae_hidden_layers=2",
+    "--policy.vqvae_steps=20000",
+    "--batch_size=128",
+    "--steps=50000",
+    "--num_workers=16",
+    "--prefetch_factor=2",
+    "--dataset.image_transforms.enable=false",
+    "--log_freq=200",
+    "--save_freq=10000"
+  ]
+}

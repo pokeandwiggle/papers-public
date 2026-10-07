@@ -435,14 +435,22 @@ def main() -> None:
             f"{checkpoint} is not a lerobot pretrained_model dir (no config.json)"
         )
 
-    policy = BaselinePolicyServer(
-        checkpoint,
-        args.device,
-        args.model_id,
-        compile_model=args.compile_model,
-        compile_mode=args.compile_mode,
-        matmul_precision=args.matmul_precision,
-    )
+    if json.loads((checkpoint / "config.json").read_text()).get("type") == "patch_vqbet":
+        # Patch Policy keeps a 30 Hz frame history and paces its own replanning.
+        from inference.patch_serve import PatchPolicyServer
+
+        if args.compile_model or args.compile_mode or args.matmul_precision:
+            raise SystemExit("patch_vqbet serving runs eagerly; compile options do not apply")
+        policy = PatchPolicyServer(checkpoint, args.device, args.model_id)
+    else:
+        policy = BaselinePolicyServer(
+            checkpoint,
+            args.device,
+            args.model_id,
+            compile_model=args.compile_model,
+            compile_mode=args.compile_mode,
+            matmul_precision=args.matmul_precision,
+        )
     try:
         serve(
             policy,

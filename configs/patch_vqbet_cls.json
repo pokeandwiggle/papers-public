@@ -1,0 +1,27 @@
+{
+  "model": "patch_vqbet",
+  "train_all_episodes": true,
+  "notes": "Global-feature control for Patch Policy: the identical VQ-BeT policy, history, tokenizer and execution settings as patch_vqbet_dense, but each camera contributes only its frozen DINOv2 ViT-S/14 CLS token.",
+  "args": [
+    "--policy.type=patch_vqbet",
+    "--policy.visual_feature=cls",
+    "--policy.device=cuda",
+    "--policy.n_obs_steps=2",
+    "--policy.obs_stride=3",
+    "--policy.chunk_size=30",
+    "--policy.n_action_steps=30",
+    "--policy.replan_every=3",
+    "--policy.vqvae_n_embed=64",
+    "--policy.vqvae_groups=2",
+    "--policy.vqvae_hidden_dim=512",
+    "--policy.vqvae_hidden_layers=2",
+    "--policy.vqvae_steps=20000",
+    "--batch_size=128",
+    "--steps=50000",
+    "--num_workers=16",
+    "--prefetch_factor=2",
+    "--dataset.image_transforms.enable=false",
+    "--log_freq=200",
+    "--save_freq=10000"
+  ]
+}
