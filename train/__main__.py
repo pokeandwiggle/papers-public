@@ -359,6 +359,40 @@ def main() -> None:
             processor_paw_pi05,
         )
 
+    tokenizer_report = None
+    if preset.get("model") == "artok":
+        from paw_baseline.artok import (  # noqa: F401
+            configuration_artok,
+            processor_artok,
+        )
+        from train.tokenizer_stage import (
+            REPORT_PATH,
+            artok_config_from_args,
+            install_tokenizer_hook,
+            prefetch_backbone_weights,
+            run_tokenizer_stage,
+            scratch_dir,
+        )
+
+        if args.resume_from is None:
+            # Stage 1: the frozen action tokenizer; the policy stage loads it.
+            tokenizer_config = artok_config_from_args(lerobot_argv)
+            tokenizer_dir = scratch_dir(
+                output_dir, tokenizer_config, prepared.root, list(split.train)
+            )
+            tokenizer_path = run_tokenizer_stage(
+                distributed_state,
+                tokenizer_config,
+                prepared.root,
+                list(split.train),
+                tokenizer_dir,
+            )
+            prefetch_backbone_weights(distributed_state, tokenizer_config)
+            install_tokenizer_hook(lerobot_train, tokenizer_path)
+            tokenizer_report = tokenizer_dir / "tokenizer_report.json"
+        else:
+            tokenizer_report = args.resume_from / "pretrained_model" / REPORT_PATH
+
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None
     final_checkpoint = args.resume_from
@@ -379,6 +413,10 @@ def main() -> None:
         (checkpoint / JPEG_CONFIG_PATH).write_text(
             json.dumps({"jpeg_quality": jpeg_quality}, indent=2) + "\n"
         )
+        if tokenizer_report is not None and tokenizer_report.is_file():
+            (checkpoint / ".paw/tokenizer_report.json").write_text(
+                tokenizer_report.read_text()
+            )
 
         final_checkpoint = checkpoint.parent
 

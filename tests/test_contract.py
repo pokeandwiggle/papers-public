@@ -35,7 +35,11 @@ def test_presets_cover_all_models():
         "act",
         "diffusion",
         "multi_task_dit",
+        "oat",
+        "oat_imagenet",
         "pi05",
+        "quest",
+        "quest_imagenet",
         "smolvla",
     ]
 
