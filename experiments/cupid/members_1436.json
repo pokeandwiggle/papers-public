@@ -1,0 +1,4232 @@
+{
+ "dataset": "dataset:1436",
+ "members": [
+  {
+   "id": 117397,
+   "rating": "ok",
+   "duration_s": 50.189812791,
+   "placement_combination_id": 40095,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117402,
+   "rating": "ok",
+   "duration_s": 51.411041036,
+   "placement_combination_id": 40095,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117414,
+   "rating": "excellent",
+   "duration_s": 45.12926047,
+   "placement_combination_id": 40095,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117421,
+   "rating": "ok",
+   "duration_s": 46.54850113,
+   "placement_combination_id": 40096,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117426,
+   "rating": "ok",
+   "duration_s": 45.325179158,
+   "placement_combination_id": 40096,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117433,
+   "rating": "excellent",
+   "duration_s": 43.200985972,
+   "placement_combination_id": 40096,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117461,
+   "rating": "excellent",
+   "duration_s": 42.776994006,
+   "placement_combination_id": 40097,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117513,
+   "rating": "ok",
+   "duration_s": 43.275106441,
+   "placement_combination_id": 40098,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117521,
+   "rating": "excellent",
+   "duration_s": 49.300037333,
+   "placement_combination_id": 40098,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117532,
+   "rating": "excellent",
+   "duration_s": 46.6806679,
+   "placement_combination_id": 40099,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117533,
+   "rating": "ok",
+   "duration_s": 51.034469339,
+   "placement_combination_id": 40100,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "ok",
+    "ok"
+   ]
+  },
+  {
+   "id": 117536,
+   "rating": "excellent",
+   "duration_s": 46.686021497,
+   "placement_combination_id": 40100,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117537,
+   "rating": "excellent",
+   "duration_s": 41.461507946,
+   "placement_combination_id": 40101,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117540,
+   "rating": "excellent",
+   "duration_s": 38.923931143,
+   "placement_combination_id": 40102,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117544,
+   "rating": "ok",
+   "duration_s": 43.271214149,
+   "placement_combination_id": 40103,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117546,
+   "rating": "ok",
+   "duration_s": 46.66699796,
+   "placement_combination_id": 40103,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117571,
+   "rating": "excellent",
+   "duration_s": 40.883970145,
+   "placement_combination_id": 40103,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117637,
+   "rating": "ok",
+   "duration_s": 47.123017846,
+   "placement_combination_id": 40104,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117650,
+   "rating": "excellent",
+   "duration_s": 50.608791778,
+   "placement_combination_id": 40104,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117689,
+   "rating": "excellent",
+   "duration_s": 46.517964028,
+   "placement_combination_id": 40105,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117700,
+   "rating": "excellent",
+   "duration_s": 48.281014168,
+   "placement_combination_id": 40106,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117706,
+   "rating": "excellent",
+   "duration_s": 48.793872052,
+   "placement_combination_id": 40107,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117711,
+   "rating": "excellent",
+   "duration_s": 48.115759582,
+   "placement_combination_id": 40108,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117739,
+   "rating": "excellent",
+   "duration_s": 42.542942692,
+   "placement_combination_id": 40109,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117791,
+   "rating": "excellent",
+   "duration_s": 39.785120022,
+   "placement_combination_id": 40110,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117803,
+   "rating": "excellent",
+   "duration_s": 46.335900211,
+   "placement_combination_id": 40111,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117811,
+   "rating": "ok",
+   "duration_s": 46.823662709,
+   "placement_combination_id": 40112,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117815,
+   "rating": "excellent",
+   "duration_s": 39.818072282,
+   "placement_combination_id": 40112,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117817,
+   "rating": "ok",
+   "duration_s": 45.581982164,
+   "placement_combination_id": 40113,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117828,
+   "rating": "excellent",
+   "duration_s": 41.493438447,
+   "placement_combination_id": 40113,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117836,
+   "rating": "ok",
+   "duration_s": 46.492495277,
+   "placement_combination_id": 40114,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117895,
+   "rating": "ok",
+   "duration_s": 46.390949134,
+   "placement_combination_id": 40114,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117925,
+   "rating": "excellent",
+   "duration_s": 45.590054828,
+   "placement_combination_id": 40114,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117934,
+   "rating": "excellent",
+   "duration_s": 47.308579461,
+   "placement_combination_id": 40115,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117944,
+   "rating": "ok",
+   "duration_s": 45.839804846,
+   "placement_combination_id": 40116,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117955,
+   "rating": "excellent",
+   "duration_s": 46.228653242,
+   "placement_combination_id": 40116,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117964,
+   "rating": "excellent",
+   "duration_s": 45.347993313,
+   "placement_combination_id": 40117,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117969,
+   "rating": "excellent",
+   "duration_s": 42.823291924,
+   "placement_combination_id": 40118,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117975,
+   "rating": "excellent",
+   "duration_s": 44.620028901,
+   "placement_combination_id": 40119,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117981,
+   "rating": "excellent",
+   "duration_s": 43.401495071,
+   "placement_combination_id": 40120,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117989,
+   "rating": "ok",
+   "duration_s": 44.532947992,
+   "placement_combination_id": 40121,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 117997,
+   "rating": "excellent",
+   "duration_s": 40.82793891,
+   "placement_combination_id": 40121,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 117998,
+   "rating": "ok",
+   "duration_s": 44.279303586,
+   "placement_combination_id": 40122,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118004,
+   "rating": "excellent",
+   "duration_s": 41.550005149,
+   "placement_combination_id": 40122,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118013,
+   "rating": "excellent",
+   "duration_s": 41.018099971,
+   "placement_combination_id": 40123,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118034,
+   "rating": "excellent",
+   "duration_s": 42.19599612,
+   "placement_combination_id": 40124,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118045,
+   "rating": "ok",
+   "duration_s": 46.978930424,
+   "placement_combination_id": 40125,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118115,
+   "rating": "excellent",
+   "duration_s": 40.721141384,
+   "placement_combination_id": 40125,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118156,
+   "rating": "excellent",
+   "duration_s": 44.543475345,
+   "placement_combination_id": 40126,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118177,
+   "rating": "ok",
+   "duration_s": 47.630240588,
+   "placement_combination_id": 40127,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118264,
+   "rating": "excellent",
+   "duration_s": 41.489285956,
+   "placement_combination_id": 40127,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118273,
+   "rating": "excellent",
+   "duration_s": 51.173092686,
+   "placement_combination_id": 40128,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118282,
+   "rating": "excellent",
+   "duration_s": 44.012024559,
+   "placement_combination_id": 40129,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118291,
+   "rating": "excellent",
+   "duration_s": 41.357233539,
+   "placement_combination_id": 40130,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118304,
+   "rating": "excellent",
+   "duration_s": 41.427184063,
+   "placement_combination_id": 40131,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118313,
+   "rating": "excellent",
+   "duration_s": 42.077356808,
+   "placement_combination_id": 40132,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118329,
+   "rating": "ok",
+   "duration_s": 42.003022424,
+   "placement_combination_id": 40133,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118392,
+   "rating": "ok",
+   "duration_s": 45.55807492,
+   "placement_combination_id": 40133,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118452,
+   "rating": "ok",
+   "duration_s": 47.216627853,
+   "placement_combination_id": 40133,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118470,
+   "rating": "excellent",
+   "duration_s": 42.878950886,
+   "placement_combination_id": 40133,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118478,
+   "rating": "excellent",
+   "duration_s": 42.391019031,
+   "placement_combination_id": 40134,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118487,
+   "rating": "excellent",
+   "duration_s": 43.504338689,
+   "placement_combination_id": 40135,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118493,
+   "rating": "excellent",
+   "duration_s": 42.520988435,
+   "placement_combination_id": 40136,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118496,
+   "rating": "ok",
+   "duration_s": 56.004018166,
+   "placement_combination_id": 40137,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118500,
+   "rating": "excellent",
+   "duration_s": 49.070274541,
+   "placement_combination_id": 40137,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118502,
+   "rating": "excellent",
+   "duration_s": 44.304157986,
+   "placement_combination_id": 40138,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118506,
+   "rating": "excellent",
+   "duration_s": 39.19093096,
+   "placement_combination_id": 40139,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118507,
+   "rating": "excellent",
+   "duration_s": 41.422977483,
+   "placement_combination_id": 40140,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118514,
+   "rating": "excellent",
+   "duration_s": 40.814409874,
+   "placement_combination_id": 40141,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118521,
+   "rating": "excellent",
+   "duration_s": 42.076009054,
+   "placement_combination_id": 40142,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118530,
+   "rating": "excellent",
+   "duration_s": 41.807507796,
+   "placement_combination_id": 40143,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118541,
+   "rating": "excellent",
+   "duration_s": 45.902241035,
+   "placement_combination_id": 40144,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118601,
+   "rating": "excellent",
+   "duration_s": 41.317402686,
+   "placement_combination_id": 40145,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118608,
+   "rating": "excellent",
+   "duration_s": 40.185203382,
+   "placement_combination_id": 40146,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118613,
+   "rating": "excellent",
+   "duration_s": 40.876830633,
+   "placement_combination_id": 40147,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118618,
+   "rating": "excellent",
+   "duration_s": 41.630042057,
+   "placement_combination_id": 40148,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118622,
+   "rating": "excellent",
+   "duration_s": 39.093973966,
+   "placement_combination_id": 40149,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118637,
+   "rating": "excellent",
+   "duration_s": 40.622953041,
+   "placement_combination_id": 40150,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118645,
+   "rating": "ok",
+   "duration_s": 39.944104976,
+   "placement_combination_id": 40151,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118653,
+   "rating": "excellent",
+   "duration_s": 40.870271804,
+   "placement_combination_id": 40151,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118666,
+   "rating": "excellent",
+   "duration_s": 44.949090409,
+   "placement_combination_id": 40152,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118678,
+   "rating": "excellent",
+   "duration_s": 44.056380115,
+   "placement_combination_id": 40153,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118685,
+   "rating": "ok",
+   "duration_s": 41.115399697,
+   "placement_combination_id": 40154,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 118692,
+   "rating": "excellent",
+   "duration_s": 40.371284803,
+   "placement_combination_id": 40154,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118715,
+   "rating": "excellent",
+   "duration_s": 41.792262067,
+   "placement_combination_id": 40155,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118721,
+   "rating": "excellent",
+   "duration_s": 38.637282467,
+   "placement_combination_id": 40156,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118730,
+   "rating": "excellent",
+   "duration_s": 38.999247638,
+   "placement_combination_id": 40157,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118738,
+   "rating": "excellent",
+   "duration_s": 39.965984915,
+   "placement_combination_id": 40158,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118747,
+   "rating": "excellent",
+   "duration_s": 42.161286738,
+   "placement_combination_id": 40159,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118762,
+   "rating": "excellent",
+   "duration_s": 41.809162347,
+   "placement_combination_id": 40160,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118772,
+   "rating": "excellent",
+   "duration_s": 41.98846395,
+   "placement_combination_id": 40161,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118782,
+   "rating": "excellent",
+   "duration_s": 38.380014698,
+   "placement_combination_id": 40162,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118790,
+   "rating": "excellent",
+   "duration_s": 40.86614809,
+   "placement_combination_id": 40163,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 118807,
+   "rating": "excellent",
+   "duration_s": 40.130113672,
+   "placement_combination_id": 40164,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119107,
+   "rating": "excellent",
+   "duration_s": 38.994805174,
+   "placement_combination_id": 40165,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119121,
+   "rating": "excellent",
+   "duration_s": 39.606758762,
+   "placement_combination_id": 40166,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119129,
+   "rating": "excellent",
+   "duration_s": 38.647251298,
+   "placement_combination_id": 40167,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119139,
+   "rating": "excellent",
+   "duration_s": 39.781017482,
+   "placement_combination_id": 40168,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119241,
+   "rating": "ok",
+   "duration_s": 37.087780427,
+   "placement_combination_id": 40169,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 119249,
+   "rating": "excellent",
+   "duration_s": 38.56108516,
+   "placement_combination_id": 40169,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119273,
+   "rating": "excellent",
+   "duration_s": 36.872976578,
+   "placement_combination_id": 40170,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119284,
+   "rating": "excellent",
+   "duration_s": 38.034627069,
+   "placement_combination_id": 40171,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119301,
+   "rating": "excellent",
+   "duration_s": 39.4715826,
+   "placement_combination_id": 40172,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119312,
+   "rating": "excellent",
+   "duration_s": 38.813012374,
+   "placement_combination_id": 40173,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119322,
+   "rating": "excellent",
+   "duration_s": 38.019278964,
+   "placement_combination_id": 40174,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119374,
+   "rating": "excellent",
+   "duration_s": 37.894750389,
+   "placement_combination_id": 40175,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119382,
+   "rating": "excellent",
+   "duration_s": 36.707755102,
+   "placement_combination_id": 40176,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119400,
+   "rating": "excellent",
+   "duration_s": 39.941442716,
+   "placement_combination_id": 40177,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119406,
+   "rating": "ok",
+   "duration_s": 43.097844741,
+   "placement_combination_id": 40178,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 119413,
+   "rating": "excellent",
+   "duration_s": 41.547000314,
+   "placement_combination_id": 40178,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119425,
+   "rating": "excellent",
+   "duration_s": 46.089990722,
+   "placement_combination_id": 40179,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119430,
+   "rating": "excellent",
+   "duration_s": 39.060969324,
+   "placement_combination_id": 40180,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119438,
+   "rating": "excellent",
+   "duration_s": 37.527194743,
+   "placement_combination_id": 40181,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119475,
+   "rating": "excellent",
+   "duration_s": 42.928265252,
+   "placement_combination_id": 40182,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119478,
+   "rating": "excellent",
+   "duration_s": 41.326902126,
+   "placement_combination_id": 40183,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119482,
+   "rating": "excellent",
+   "duration_s": 39.096207536,
+   "placement_combination_id": 40184,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119492,
+   "rating": "excellent",
+   "duration_s": 41.042527686,
+   "placement_combination_id": 40185,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119507,
+   "rating": "excellent",
+   "duration_s": 39.365004224,
+   "placement_combination_id": 40186,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119618,
+   "rating": "excellent",
+   "duration_s": 40.61055231,
+   "placement_combination_id": 40187,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119627,
+   "rating": "excellent",
+   "duration_s": 39.987136354,
+   "placement_combination_id": 40188,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119634,
+   "rating": "excellent",
+   "duration_s": 40.028695404,
+   "placement_combination_id": 40189,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119646,
+   "rating": "excellent",
+   "duration_s": 38.560166541,
+   "placement_combination_id": 40190,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119673,
+   "rating": "excellent",
+   "duration_s": 38.601795222,
+   "placement_combination_id": 40191,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119681,
+   "rating": "excellent",
+   "duration_s": 37.895458049,
+   "placement_combination_id": 40192,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119703,
+   "rating": "excellent",
+   "duration_s": 37.102534615,
+   "placement_combination_id": 40193,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119718,
+   "rating": "excellent",
+   "duration_s": 35.586008865,
+   "placement_combination_id": 40194,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119774,
+   "rating": "excellent",
+   "duration_s": 39.39587628,
+   "placement_combination_id": 40195,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119780,
+   "rating": "excellent",
+   "duration_s": 37.277813416,
+   "placement_combination_id": 40196,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119788,
+   "rating": "excellent",
+   "duration_s": 41.620239523,
+   "placement_combination_id": 40197,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119796,
+   "rating": "excellent",
+   "duration_s": 41.846265894,
+   "placement_combination_id": 40198,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119800,
+   "rating": "excellent",
+   "duration_s": 36.543650486,
+   "placement_combination_id": 40199,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119822,
+   "rating": "excellent",
+   "duration_s": 40.780473927,
+   "placement_combination_id": 40200,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119824,
+   "rating": "excellent",
+   "duration_s": 44.354433822,
+   "placement_combination_id": 40201,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119825,
+   "rating": "excellent",
+   "duration_s": 39.899937236,
+   "placement_combination_id": 40202,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119832,
+   "rating": "excellent",
+   "duration_s": 44.409220102,
+   "placement_combination_id": 40203,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119840,
+   "rating": "excellent",
+   "duration_s": 46.827965217,
+   "placement_combination_id": 40204,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119843,
+   "rating": "excellent",
+   "duration_s": 41.883608123,
+   "placement_combination_id": 40205,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119846,
+   "rating": "ok",
+   "duration_s": 47.795257162,
+   "placement_combination_id": 40206,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 119853,
+   "rating": "ok",
+   "duration_s": 47.349137158,
+   "placement_combination_id": 40206,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 119855,
+   "rating": "excellent",
+   "duration_s": 44.975187367,
+   "placement_combination_id": 40206,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119860,
+   "rating": "excellent",
+   "duration_s": 47.689139371,
+   "placement_combination_id": 40207,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119865,
+   "rating": "excellent",
+   "duration_s": 40.747709148,
+   "placement_combination_id": 40208,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119938,
+   "rating": "excellent",
+   "duration_s": 46.496451434,
+   "placement_combination_id": 40209,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119949,
+   "rating": "excellent",
+   "duration_s": 45.055266558,
+   "placement_combination_id": 40210,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119956,
+   "rating": "excellent",
+   "duration_s": 46.334712903,
+   "placement_combination_id": 40211,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119962,
+   "rating": "excellent",
+   "duration_s": 48.6669865,
+   "placement_combination_id": 40212,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 119980,
+   "rating": "ok",
+   "duration_s": 44.761007586,
+   "placement_combination_id": 40213,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120002,
+   "rating": "excellent",
+   "duration_s": 42.119329818,
+   "placement_combination_id": 40213,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120011,
+   "rating": "excellent",
+   "duration_s": 42.238052013,
+   "placement_combination_id": 40214,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120076,
+   "rating": "excellent",
+   "duration_s": 38.316374667,
+   "placement_combination_id": 40215,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120084,
+   "rating": "ok",
+   "duration_s": 46.304121315,
+   "placement_combination_id": 40216,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 120089,
+   "rating": "excellent",
+   "duration_s": 43.204528167,
+   "placement_combination_id": 40216,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120099,
+   "rating": "excellent",
+   "duration_s": 44.616987359,
+   "placement_combination_id": 40217,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120126,
+   "rating": "excellent",
+   "duration_s": 48.780712963,
+   "placement_combination_id": 40218,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120142,
+   "rating": "ok",
+   "duration_s": 45.241584347,
+   "placement_combination_id": 40219,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120152,
+   "rating": "ok",
+   "duration_s": 46.777001569,
+   "placement_combination_id": 40219,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 120177,
+   "rating": "excellent",
+   "duration_s": 42.343013523,
+   "placement_combination_id": 40219,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120191,
+   "rating": "ok",
+   "duration_s": 43.22900878,
+   "placement_combination_id": 40220,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 120203,
+   "rating": "excellent",
+   "duration_s": 40.349668861,
+   "placement_combination_id": 40220,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120228,
+   "rating": "excellent",
+   "duration_s": 38.699069048,
+   "placement_combination_id": 40221,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120240,
+   "rating": "excellent",
+   "duration_s": 39.238455476,
+   "placement_combination_id": 40222,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120248,
+   "rating": "excellent",
+   "duration_s": 40.822275999,
+   "placement_combination_id": 40223,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120305,
+   "rating": "excellent",
+   "duration_s": 46.010225757,
+   "placement_combination_id": 40224,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120312,
+   "rating": "excellent",
+   "duration_s": 47.151964087,
+   "placement_combination_id": 40225,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120320,
+   "rating": "excellent",
+   "duration_s": 43.425209355,
+   "placement_combination_id": 40226,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120333,
+   "rating": "excellent",
+   "duration_s": 43.150425265,
+   "placement_combination_id": 40227,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120361,
+   "rating": "excellent",
+   "duration_s": 45.998985032,
+   "placement_combination_id": 40228,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120372,
+   "rating": "excellent",
+   "duration_s": 41.025668752,
+   "placement_combination_id": 40229,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120384,
+   "rating": "excellent",
+   "duration_s": 42.882791021,
+   "placement_combination_id": 40230,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120396,
+   "rating": "excellent",
+   "duration_s": 45.661044288,
+   "placement_combination_id": 40231,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120408,
+   "rating": "excellent",
+   "duration_s": 42.093235001,
+   "placement_combination_id": 40232,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120426,
+   "rating": "excellent",
+   "duration_s": 39.625089513,
+   "placement_combination_id": 40233,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120431,
+   "rating": "excellent",
+   "duration_s": 40.912290916,
+   "placement_combination_id": 40234,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120502,
+   "rating": "excellent",
+   "duration_s": 37.412991813,
+   "placement_combination_id": 40235,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120518,
+   "rating": "excellent",
+   "duration_s": 43.190130446,
+   "placement_combination_id": 40236,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120533,
+   "rating": "excellent",
+   "duration_s": 38.370234904,
+   "placement_combination_id": 40237,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120548,
+   "rating": "excellent",
+   "duration_s": 42.195991754,
+   "placement_combination_id": 40238,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120558,
+   "rating": "excellent",
+   "duration_s": 40.896026626,
+   "placement_combination_id": 40239,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120578,
+   "rating": "excellent",
+   "duration_s": 38.530979452,
+   "placement_combination_id": 40240,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120591,
+   "rating": "excellent",
+   "duration_s": 39.056883921,
+   "placement_combination_id": 40241,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120613,
+   "rating": "excellent",
+   "duration_s": 39.588584813,
+   "placement_combination_id": 40242,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120628,
+   "rating": "excellent",
+   "duration_s": 41.345062785,
+   "placement_combination_id": 40243,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120659,
+   "rating": "excellent",
+   "duration_s": 41.764990631,
+   "placement_combination_id": 40244,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120777,
+   "rating": "excellent",
+   "duration_s": 40.461014176,
+   "placement_combination_id": 40245,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120786,
+   "rating": "excellent",
+   "duration_s": 39.617005616,
+   "placement_combination_id": 40246,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120790,
+   "rating": "excellent",
+   "duration_s": 40.66311032,
+   "placement_combination_id": 40247,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120824,
+   "rating": "excellent",
+   "duration_s": 43.27902762,
+   "placement_combination_id": 40248,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120839,
+   "rating": "excellent",
+   "duration_s": 41.318036839,
+   "placement_combination_id": 40249,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120854,
+   "rating": "excellent",
+   "duration_s": 44.615997716,
+   "placement_combination_id": 40250,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120867,
+   "rating": "excellent",
+   "duration_s": 42.324010546,
+   "placement_combination_id": 40251,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120877,
+   "rating": "excellent",
+   "duration_s": 42.245181162,
+   "placement_combination_id": 40252,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120889,
+   "rating": "excellent",
+   "duration_s": 41.132937427,
+   "placement_combination_id": 40253,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 120901,
+   "rating": "excellent",
+   "duration_s": 41.85299489,
+   "placement_combination_id": 40254,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121009,
+   "rating": "excellent",
+   "duration_s": 40.484609646,
+   "placement_combination_id": 40255,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121015,
+   "rating": "excellent",
+   "duration_s": 43.094956164,
+   "placement_combination_id": 40256,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121023,
+   "rating": "ok",
+   "duration_s": 45.475282057,
+   "placement_combination_id": 40257,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 121027,
+   "rating": "excellent",
+   "duration_s": 38.588951821,
+   "placement_combination_id": 40257,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121035,
+   "rating": "excellent",
+   "duration_s": 39.922099279,
+   "placement_combination_id": 40258,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121042,
+   "rating": "excellent",
+   "duration_s": 44.459887891,
+   "placement_combination_id": 40259,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121076,
+   "rating": "excellent",
+   "duration_s": 39.912097621,
+   "placement_combination_id": 40260,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121082,
+   "rating": "ok",
+   "duration_s": 43.621210756,
+   "placement_combination_id": 40261,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "ok",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121094,
+   "rating": "excellent",
+   "duration_s": 38.85025935,
+   "placement_combination_id": 40262,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121099,
+   "rating": "excellent",
+   "duration_s": 40.208948904,
+   "placement_combination_id": 40263,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121398,
+   "rating": "excellent",
+   "duration_s": 39.874015824,
+   "placement_combination_id": 40264,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121458,
+   "rating": "ok",
+   "duration_s": 39.995557642,
+   "placement_combination_id": 40265,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 121463,
+   "rating": "excellent",
+   "duration_s": 39.258470092,
+   "placement_combination_id": 40265,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121474,
+   "rating": "excellent",
+   "duration_s": 42.153480213,
+   "placement_combination_id": 40266,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121495,
+   "rating": "excellent",
+   "duration_s": 43.161213636,
+   "placement_combination_id": 40267,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121504,
+   "rating": "excellent",
+   "duration_s": 40.496799324,
+   "placement_combination_id": 40268,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121512,
+   "rating": "excellent",
+   "duration_s": 43.385516437,
+   "placement_combination_id": 40269,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121579,
+   "rating": "excellent",
+   "duration_s": 45.891040127,
+   "placement_combination_id": 40270,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121593,
+   "rating": "ok",
+   "duration_s": 43.211765851,
+   "placement_combination_id": 40271,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 121610,
+   "rating": "excellent",
+   "duration_s": 39.323623014,
+   "placement_combination_id": 40271,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121622,
+   "rating": "excellent",
+   "duration_s": 39.520099293,
+   "placement_combination_id": 40272,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121636,
+   "rating": "excellent",
+   "duration_s": 42.467829867,
+   "placement_combination_id": 40273,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121649,
+   "rating": "excellent",
+   "duration_s": 40.100919674,
+   "placement_combination_id": 40274,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121759,
+   "rating": "excellent",
+   "duration_s": 39.779228053,
+   "placement_combination_id": 40275,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121779,
+   "rating": "excellent",
+   "duration_s": 38.852849639,
+   "placement_combination_id": 40276,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121791,
+   "rating": "excellent",
+   "duration_s": 41.149780359,
+   "placement_combination_id": 40277,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121802,
+   "rating": "excellent",
+   "duration_s": 37.813797447,
+   "placement_combination_id": 40278,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121811,
+   "rating": "excellent",
+   "duration_s": 39.427462257,
+   "placement_combination_id": 40279,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121821,
+   "rating": "excellent",
+   "duration_s": 43.366647279,
+   "placement_combination_id": 40280,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121831,
+   "rating": "excellent",
+   "duration_s": 38.437934626,
+   "placement_combination_id": 40281,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121842,
+   "rating": "excellent",
+   "duration_s": 38.576758724,
+   "placement_combination_id": 40282,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121848,
+   "rating": "excellent",
+   "duration_s": 38.761743803,
+   "placement_combination_id": 40283,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121854,
+   "rating": "ok",
+   "duration_s": 47.65489475,
+   "placement_combination_id": 40284,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "ok",
+    "ok"
+   ]
+  },
+  {
+   "id": 121948,
+   "rating": "excellent",
+   "duration_s": 47.006414936,
+   "placement_combination_id": 40284,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121958,
+   "rating": "excellent",
+   "duration_s": 42.47973537,
+   "placement_combination_id": 40285,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121965,
+   "rating": "excellent",
+   "duration_s": 39.587978231,
+   "placement_combination_id": 40286,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121975,
+   "rating": "ok",
+   "duration_s": 37.676294369,
+   "placement_combination_id": 40287,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 121984,
+   "rating": "excellent",
+   "duration_s": 37.148053508,
+   "placement_combination_id": 40287,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 121998,
+   "rating": "excellent",
+   "duration_s": 35.068525852,
+   "placement_combination_id": 40288,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122009,
+   "rating": "ok",
+   "duration_s": 35.682576895,
+   "placement_combination_id": 40289,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "ok",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122036,
+   "rating": "excellent",
+   "duration_s": 38.575439635,
+   "placement_combination_id": 40289,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122049,
+   "rating": "excellent",
+   "duration_s": 38.311900478,
+   "placement_combination_id": 40290,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122072,
+   "rating": "ok",
+   "duration_s": 43.578130276,
+   "placement_combination_id": 40291,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122079,
+   "rating": "excellent",
+   "duration_s": 42.482393272,
+   "placement_combination_id": 40291,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122099,
+   "rating": "excellent",
+   "duration_s": 36.408334259,
+   "placement_combination_id": 40292,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122110,
+   "rating": "excellent",
+   "duration_s": 38.920041926,
+   "placement_combination_id": 40293,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122121,
+   "rating": "excellent",
+   "duration_s": 40.045936526,
+   "placement_combination_id": 40294,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122183,
+   "rating": "excellent",
+   "duration_s": 38.684317749,
+   "placement_combination_id": 40295,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122210,
+   "rating": "excellent",
+   "duration_s": 41.528500342,
+   "placement_combination_id": 40296,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122215,
+   "rating": "excellent",
+   "duration_s": 37.5564754,
+   "placement_combination_id": 40297,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122218,
+   "rating": "excellent",
+   "duration_s": 41.1859782,
+   "placement_combination_id": 40298,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122223,
+   "rating": "excellent",
+   "duration_s": 40.841492726,
+   "placement_combination_id": 40299,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122231,
+   "rating": "excellent",
+   "duration_s": 41.028020808,
+   "placement_combination_id": 40300,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122238,
+   "rating": "excellent",
+   "duration_s": 40.969992687,
+   "placement_combination_id": 40301,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122240,
+   "rating": "excellent",
+   "duration_s": 42.503276859,
+   "placement_combination_id": 40302,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122246,
+   "rating": "excellent",
+   "duration_s": 41.795196252,
+   "placement_combination_id": 40303,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122250,
+   "rating": "excellent",
+   "duration_s": 40.507972244,
+   "placement_combination_id": 40304,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122294,
+   "rating": "excellent",
+   "duration_s": 41.718222203,
+   "placement_combination_id": 40305,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122299,
+   "rating": "ok",
+   "duration_s": 44.624991081,
+   "placement_combination_id": 40306,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122301,
+   "rating": "excellent",
+   "duration_s": 39.005942201,
+   "placement_combination_id": 40306,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122305,
+   "rating": "excellent",
+   "duration_s": 41.653600351,
+   "placement_combination_id": 40307,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122316,
+   "rating": "excellent",
+   "duration_s": 40.179986059,
+   "placement_combination_id": 40308,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122320,
+   "rating": "excellent",
+   "duration_s": 38.830110574,
+   "placement_combination_id": 40309,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122323,
+   "rating": "excellent",
+   "duration_s": 44.850848937,
+   "placement_combination_id": 40310,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122327,
+   "rating": "excellent",
+   "duration_s": 42.966665085,
+   "placement_combination_id": 40311,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122331,
+   "rating": "excellent",
+   "duration_s": 44.290661194,
+   "placement_combination_id": 40312,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122335,
+   "rating": "excellent",
+   "duration_s": 41.59099911,
+   "placement_combination_id": 40313,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122337,
+   "rating": "excellent",
+   "duration_s": 42.116283264,
+   "placement_combination_id": 40314,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122348,
+   "rating": "excellent",
+   "duration_s": 41.562921503,
+   "placement_combination_id": 40315,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122353,
+   "rating": "excellent",
+   "duration_s": 38.790257182,
+   "placement_combination_id": 40316,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122377,
+   "rating": "excellent",
+   "duration_s": 39.200087353,
+   "placement_combination_id": 40317,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122381,
+   "rating": "excellent",
+   "duration_s": 40.832443243,
+   "placement_combination_id": 40318,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122395,
+   "rating": "excellent",
+   "duration_s": 43.059919106,
+   "placement_combination_id": 40319,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122398,
+   "rating": "ok",
+   "duration_s": 46.999997836,
+   "placement_combination_id": 40320,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122402,
+   "rating": "excellent",
+   "duration_s": 48.266937683,
+   "placement_combination_id": 40321,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122408,
+   "rating": "excellent",
+   "duration_s": 46.422826485,
+   "placement_combination_id": 40322,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122451,
+   "rating": "excellent",
+   "duration_s": 51.209036856,
+   "placement_combination_id": 40323,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122457,
+   "rating": "excellent",
+   "duration_s": 51.771468568,
+   "placement_combination_id": 40324,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122464,
+   "rating": "excellent",
+   "duration_s": 52.484424914,
+   "placement_combination_id": 40325,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122471,
+   "rating": "ok",
+   "duration_s": 51.382468902,
+   "placement_combination_id": 40326,
+   "subtask_ratings": [
+    "excellent",
+    "ok",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122476,
+   "rating": "excellent",
+   "duration_s": 47.686294538,
+   "placement_combination_id": 40326,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122485,
+   "rating": "excellent",
+   "duration_s": 44.730230254,
+   "placement_combination_id": 40327,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122492,
+   "rating": "excellent",
+   "duration_s": 45.428296667,
+   "placement_combination_id": 40328,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122499,
+   "rating": "excellent",
+   "duration_s": 46.644118283,
+   "placement_combination_id": 40329,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122506,
+   "rating": "excellent",
+   "duration_s": 45.787087892,
+   "placement_combination_id": 40330,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122516,
+   "rating": "excellent",
+   "duration_s": 48.177333124,
+   "placement_combination_id": 40331,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122531,
+   "rating": "excellent",
+   "duration_s": 47.954846411,
+   "placement_combination_id": 40332,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122548,
+   "rating": "excellent",
+   "duration_s": 51.224442008,
+   "placement_combination_id": 40333,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122558,
+   "rating": "excellent",
+   "duration_s": 47.866519126,
+   "placement_combination_id": 40334,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122573,
+   "rating": "ok",
+   "duration_s": 45.760995576,
+   "placement_combination_id": 40335,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122590,
+   "rating": "excellent",
+   "duration_s": 49.19698206,
+   "placement_combination_id": 40335,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122606,
+   "rating": "excellent",
+   "duration_s": 44.383724301,
+   "placement_combination_id": 40336,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122616,
+   "rating": "excellent",
+   "duration_s": 52.021977241,
+   "placement_combination_id": 40337,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122627,
+   "rating": "ok",
+   "duration_s": 47.380027469,
+   "placement_combination_id": 40338,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122635,
+   "rating": "excellent",
+   "duration_s": 46.888955306,
+   "placement_combination_id": 40338,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122650,
+   "rating": "excellent",
+   "duration_s": 47.263966364,
+   "placement_combination_id": 40339,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122658,
+   "rating": "excellent",
+   "duration_s": 42.585172716,
+   "placement_combination_id": 40340,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122668,
+   "rating": "excellent",
+   "duration_s": 49.0054541,
+   "placement_combination_id": 40341,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122673,
+   "rating": "excellent",
+   "duration_s": 42.705192573,
+   "placement_combination_id": 40342,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122679,
+   "rating": "excellent",
+   "duration_s": 43.769574793,
+   "placement_combination_id": 40343,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122684,
+   "rating": "excellent",
+   "duration_s": 43.41774559,
+   "placement_combination_id": 40344,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122738,
+   "rating": "excellent",
+   "duration_s": 39.225558995,
+   "placement_combination_id": 40345,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122757,
+   "rating": "excellent",
+   "duration_s": 44.671981935,
+   "placement_combination_id": 40346,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122768,
+   "rating": "excellent",
+   "duration_s": 43.444953941,
+   "placement_combination_id": 40347,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122782,
+   "rating": "excellent",
+   "duration_s": 46.940537051,
+   "placement_combination_id": 40348,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122793,
+   "rating": "excellent",
+   "duration_s": 40.852569678,
+   "placement_combination_id": 40349,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122801,
+   "rating": "excellent",
+   "duration_s": 38.975015364,
+   "placement_combination_id": 40350,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122820,
+   "rating": "excellent",
+   "duration_s": 44.225579408,
+   "placement_combination_id": 40351,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122831,
+   "rating": "ok",
+   "duration_s": 38.814874373,
+   "placement_combination_id": 40352,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "ok",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122837,
+   "rating": "excellent",
+   "duration_s": 43.69046574,
+   "placement_combination_id": 40352,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122841,
+   "rating": "excellent",
+   "duration_s": 43.747860725,
+   "placement_combination_id": 40353,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122846,
+   "rating": "excellent",
+   "duration_s": 39.6476682,
+   "placement_combination_id": 40354,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122855,
+   "rating": "excellent",
+   "duration_s": 43.088510941,
+   "placement_combination_id": 40355,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122860,
+   "rating": "ok",
+   "duration_s": 40.016685475,
+   "placement_combination_id": 40356,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 122869,
+   "rating": "ok",
+   "duration_s": 40.407502047,
+   "placement_combination_id": 40356,
+   "subtask_ratings": [
+    "ok",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122877,
+   "rating": "excellent",
+   "duration_s": 39.377480518,
+   "placement_combination_id": 40356,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122884,
+   "rating": "excellent",
+   "duration_s": 39.81401507,
+   "placement_combination_id": 40357,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122898,
+   "rating": "excellent",
+   "duration_s": 43.46152872,
+   "placement_combination_id": 40358,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122910,
+   "rating": "excellent",
+   "duration_s": 43.831222763,
+   "placement_combination_id": 40359,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122921,
+   "rating": "excellent",
+   "duration_s": 42.569191248,
+   "placement_combination_id": 40360,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 122926,
+   "rating": "excellent",
+   "duration_s": 41.598551782,
+   "placement_combination_id": 40361,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123008,
+   "rating": "excellent",
+   "duration_s": 39.40495059,
+   "placement_combination_id": 40362,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123013,
+   "rating": "excellent",
+   "duration_s": 38.513028848,
+   "placement_combination_id": 40363,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123017,
+   "rating": "excellent",
+   "duration_s": 40.219979803,
+   "placement_combination_id": 40364,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123033,
+   "rating": "excellent",
+   "duration_s": 39.229089472,
+   "placement_combination_id": 40365,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123046,
+   "rating": "excellent",
+   "duration_s": 39.375983533,
+   "placement_combination_id": 40366,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123054,
+   "rating": "ok",
+   "duration_s": 40.048785965,
+   "placement_combination_id": 40367,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 123059,
+   "rating": "ok",
+   "duration_s": 43.680187359,
+   "placement_combination_id": 40367,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 123064,
+   "rating": "excellent",
+   "duration_s": 40.619721219,
+   "placement_combination_id": 40367,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123068,
+   "rating": "excellent",
+   "duration_s": 45.209871016,
+   "placement_combination_id": 40368,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123083,
+   "rating": "excellent",
+   "duration_s": 41.455714408,
+   "placement_combination_id": 40369,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123089,
+   "rating": "excellent",
+   "duration_s": 44.527402734,
+   "placement_combination_id": 40370,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123117,
+   "rating": "excellent",
+   "duration_s": 41.526712237,
+   "placement_combination_id": 40371,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123122,
+   "rating": "excellent",
+   "duration_s": 39.993432043,
+   "placement_combination_id": 40372,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123195,
+   "rating": "excellent",
+   "duration_s": 42.971267897,
+   "placement_combination_id": 40373,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123205,
+   "rating": "excellent",
+   "duration_s": 38.249138208,
+   "placement_combination_id": 40374,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123218,
+   "rating": "excellent",
+   "duration_s": 39.217424471,
+   "placement_combination_id": 40375,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123242,
+   "rating": "excellent",
+   "duration_s": 41.141910934,
+   "placement_combination_id": 40376,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123244,
+   "rating": "excellent",
+   "duration_s": 39.13112733,
+   "placement_combination_id": 40377,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123249,
+   "rating": "excellent",
+   "duration_s": 37.916562345,
+   "placement_combination_id": 40378,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123262,
+   "rating": "excellent",
+   "duration_s": 40.365666432,
+   "placement_combination_id": 40379,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123278,
+   "rating": "excellent",
+   "duration_s": 39.2821906,
+   "placement_combination_id": 40380,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123294,
+   "rating": "excellent",
+   "duration_s": 39.621927909,
+   "placement_combination_id": 40381,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123302,
+   "rating": "ok",
+   "duration_s": 37.952032874,
+   "placement_combination_id": 40382,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123311,
+   "rating": "excellent",
+   "duration_s": 34.214793649,
+   "placement_combination_id": 40382,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123321,
+   "rating": "excellent",
+   "duration_s": 39.215578881,
+   "placement_combination_id": 40383,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123333,
+   "rating": "excellent",
+   "duration_s": 38.777289937,
+   "placement_combination_id": 40384,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123340,
+   "rating": "excellent",
+   "duration_s": 36.975032565,
+   "placement_combination_id": 40385,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123349,
+   "rating": "excellent",
+   "duration_s": 39.20809455,
+   "placement_combination_id": 40386,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123356,
+   "rating": "excellent",
+   "duration_s": 35.049357198,
+   "placement_combination_id": 40387,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123362,
+   "rating": "excellent",
+   "duration_s": 36.769046365,
+   "placement_combination_id": 40388,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123370,
+   "rating": "excellent",
+   "duration_s": 35.166145217,
+   "placement_combination_id": 40389,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123373,
+   "rating": "excellent",
+   "duration_s": 39.311336908,
+   "placement_combination_id": 40390,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123378,
+   "rating": "excellent",
+   "duration_s": 38.206035149,
+   "placement_combination_id": 40391,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123386,
+   "rating": "ok",
+   "duration_s": 37.110956006,
+   "placement_combination_id": 40392,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "ok"
+   ]
+  },
+  {
+   "id": 123399,
+   "rating": "excellent",
+   "duration_s": 42.503144771,
+   "placement_combination_id": 40392,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123406,
+   "rating": "excellent",
+   "duration_s": 38.281007896,
+   "placement_combination_id": 40393,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123417,
+   "rating": "excellent",
+   "duration_s": 36.892574139,
+   "placement_combination_id": 40394,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  },
+  {
+   "id": 123434,
+   "rating": "excellent",
+   "duration_s": 45.971143914,
+   "placement_combination_id": 40320,
+   "subtask_ratings": [
+    "excellent",
+    "excellent",
+    "excellent",
+    "excellent"
+   ]
+  }
+ ]
+}

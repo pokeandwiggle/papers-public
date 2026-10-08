@@ -16,6 +16,8 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "mcap>=1.5.0",
+    "mcap-ros2-support>=0.5.7",
     "pytest>=8",
 ]
 

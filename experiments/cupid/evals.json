@@ -1,0 +1,5 @@
+{
+ "pour_screws_into_funnel": {"base": "eval:2490", "random": "eval:2508", "cupid": "eval:2754"},
+ "place_loaded_boxes_in_container_bimanual": {"base": "eval:2489", "random": "eval:2503", "cupid": "eval:2756"},
+ "clamp_electrical_component": {"base": "eval:2504", "random": "eval:2505", "cupid": "eval:2757"}
+}

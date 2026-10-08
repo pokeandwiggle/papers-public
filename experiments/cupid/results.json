@@ -1,0 +1,184 @@
+{
+ "tasks": {
+  "pour_screws_into_funnel": {
+   "base": {
+    "handle": "eval:2490",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2490",
+    "state": "succeeded",
+    "successes": 9,
+    "rated": 30,
+    "poker_ap_pct": 48,
+    "our_ap_pct": 47.77777777777777,
+    "our_sr": 0.3,
+    "duplicates": []
+   },
+   "random": {
+    "handle": "eval:2508",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2508",
+    "state": "succeeded",
+    "successes": 16,
+    "rated": 30,
+    "poker_ap_pct": 59,
+    "our_ap_pct": 58.88888888888888,
+    "our_sr": 0.5333333333333333,
+    "duplicates": []
+   },
+   "cupid": {
+    "handle": "eval:2754",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2754",
+    "state": "succeeded",
+    "successes": 13,
+    "rated": 30,
+    "poker_ap_pct": 58,
+    "our_ap_pct": 57.77777777777777,
+    "our_sr": 0.43333333333333335,
+    "duplicates": []
+   },
+   "paired": {
+    "n": 30,
+    "unpaired_placements": [],
+    "sr_diff_pp": -10.0,
+    "ap_diff_pp": -1.1111111111111127,
+    "discordant_cupid_only": 4,
+    "discordant_random_only": 7,
+    "mcnemar_exact_p": 0.548828125
+   }
+  },
+  "place_loaded_boxes_in_container_bimanual": {
+   "base": {
+    "handle": "eval:2489",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2489",
+    "state": "succeeded",
+    "successes": 22,
+    "rated": 30,
+    "poker_ap_pct": 93,
+    "our_ap_pct": 92.5,
+    "our_sr": 0.7333333333333333,
+    "duplicates": []
+   },
+   "random": {
+    "handle": "eval:2503",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2503",
+    "state": "succeeded",
+    "successes": 18,
+    "rated": 30,
+    "poker_ap_pct": 82,
+    "our_ap_pct": 81.66666666666667,
+    "our_sr": 0.6,
+    "duplicates": []
+   },
+   "cupid": {
+    "handle": "eval:2756",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2756",
+    "state": "succeeded",
+    "successes": 7,
+    "rated": 30,
+    "poker_ap_pct": 68,
+    "our_ap_pct": 68.33333333333333,
+    "our_sr": 0.23333333333333334,
+    "duplicates": []
+   },
+   "paired": {
+    "n": 30,
+    "unpaired_placements": [],
+    "sr_diff_pp": -36.666666666666664,
+    "ap_diff_pp": -13.333333333333334,
+    "discordant_cupid_only": 3,
+    "discordant_random_only": 14,
+    "mcnemar_exact_p": 0.012725830078125
+   }
+  },
+  "clamp_electrical_component": {
+   "base": {
+    "handle": "eval:2504",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2504",
+    "state": "succeeded",
+    "successes": 1,
+    "rated": 30,
+    "poker_ap_pct": 33,
+    "our_ap_pct": 33.333333333333336,
+    "our_sr": 0.03333333333333333,
+    "duplicates": []
+   },
+   "random": {
+    "handle": "eval:2505",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2505",
+    "state": "succeeded",
+    "successes": 0,
+    "rated": 30,
+    "poker_ap_pct": 30,
+    "our_ap_pct": 30.0,
+    "our_sr": 0.0,
+    "duplicates": []
+   },
+   "cupid": {
+    "handle": "eval:2757",
+    "link": "https://poker.pokeandwiggle.com/projects/184?spec=2757",
+    "state": "succeeded",
+    "successes": 1,
+    "rated": 30,
+    "poker_ap_pct": 40,
+    "our_ap_pct": 40.000000000000014,
+    "our_sr": 0.03333333333333333,
+    "duplicates": []
+   },
+   "paired": {
+    "n": 30,
+    "unpaired_placements": [],
+    "sr_diff_pp": 3.3333333333333335,
+    "ap_diff_pp": 10.0,
+    "discordant_cupid_only": 1,
+    "discordant_random_only": 0,
+    "mcnemar_exact_p": 1.0
+   }
+  }
+ },
+ "overall_sr": {
+  "estimate_pp": -14.444444444444446,
+  "ci95_pp": [
+   -25.656343440773067,
+   -3.232545448115824
+  ],
+  "bootstrap_ci95_pp": [
+   -25.555555555555554,
+   -3.3333333333333335
+  ],
+  "se_pp": 5.608938921758011,
+  "df": 62.058475017926895,
+  "p_sign_flip": 0.023884880575597123,
+  "per_task_pp": [
+   -10.0,
+   -36.666666666666664,
+   3.3333333333333335
+  ],
+  "pairs": [
+   30,
+   30,
+   30
+  ]
+ },
+ "overall_ap": {
+  "estimate_pp": -1.4814814814814816,
+  "ci95_pp": [
+   -9.499584270821646,
+   6.536621307858683
+  ],
+  "bootstrap_ci95_pp": [
+   -9.166666666666666,
+   6.388888888888887
+  ],
+  "se_pp": 4.012656764965005,
+  "df": 63.222363414899384,
+  "p_sign_flip": 0.7362913185434072,
+  "per_task_pp": [
+   -1.1111111111111127,
+   -13.333333333333334,
+   10.0
+  ],
+  "pairs": [
+   30,
+   30,
+   30
+  ]
+ }
+}

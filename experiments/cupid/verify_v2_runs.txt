@@ -1,0 +1,48 @@
+== pour_screws_into_funnel: v2 train:1108 (succeeded, code 4b03c95, model model:783) vs v1 train:1061 (code fb1dec0, model model:734); v1/v2 overlap 115/154
+   [ok] v2 params IDs == v2 selection
+   [ok] v2 params IDs != v1 selection
+   [ok] v1 params IDs == v1 selection
+   [ok] same preset/overrides/dataset/world size as v1 and random
+   [ok] same kept count as random
+   [ok] v2 checkpoint manifest == v2 selection
+   [ok] v1 checkpoint manifest == v1 selection
+   [ok] v2 normalization fit on v2 episodes only
+   [ok] v2 normalization episodes != v1
+   [ok] v2 action stats differ from v1 (refit on v2 subset)
+   [ok] v2 weights differ from v1
+   [ok] v2 policy config == v1 except resume metadata []
+   [ok] train config differs only in data/resume keys ['dataset.episodes', 'dataset.repo_id', 'dataset.root', 'wandb.run_id']
+   [ok] v2 run was not resumed
+   [ok] v2 JPEG recipe == v1
+== place_loaded_boxes_in_container_bimanual: v2 train:1109 (succeeded, code 4b03c95, model model:784) vs v1 train:1060 (code df524be, model model:733); v1/v2 overlap 131/176
+   [ok] v2 params IDs == v2 selection
+   [ok] v2 params IDs != v1 selection
+   [ok] v1 params IDs == v1 selection
+   [ok] same preset/overrides/dataset/world size as v1 and random
+   [ok] same kept count as random
+   [ok] v2 checkpoint manifest == v2 selection
+   [ok] v1 checkpoint manifest == v1 selection
+   [ok] v2 normalization fit on v2 episodes only
+   [ok] v2 normalization episodes != v1
+   [ok] v2 action stats differ from v1 (refit on v2 subset)
+   [ok] v2 weights differ from v1
+   [ok] v2 policy config == v1 except resume metadata ['pretrained_path']
+   [ok] train config differs only in data/resume keys ['checkpoint_path', 'dataset.episodes', 'dataset.repo_id', 'dataset.root', 'policy.pretrained_path', 'resume', 'wandb.run_id']
+   [ok] v2 run was not resumed
+   [ok] v2 JPEG recipe == v1
+== clamp_electrical_component: v2 train:1110 (succeeded, code 4b03c95, model model:785) vs v1 train:1059 (code 3f68c80, model model:732); v1/v2 overlap 175/229
+   [ok] v2 params IDs == v2 selection
+   [ok] v2 params IDs != v1 selection
+   [ok] v1 params IDs == v1 selection
+   [ok] same preset/overrides/dataset/world size as v1 and random
+   [ok] same kept count as random
+   [ok] v2 checkpoint manifest == v2 selection
+   [ok] v1 checkpoint manifest == v1 selection
+   [ok] v2 normalization fit on v2 episodes only
+   [ok] v2 normalization episodes != v1
+   [ok] v2 action stats differ from v1 (refit on v2 subset)
+   [ok] v2 weights differ from v1
+   [ok] v2 policy config == v1 except resume metadata []
+   [ok] train config differs only in data/resume keys ['dataset.episodes', 'dataset.repo_id', 'dataset.root', 'wandb.run_id']
+   [ok] v2 run was not resumed
+   [ok] v2 JPEG recipe == v1

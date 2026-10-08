@@ -1,0 +1,6 @@
+{
+ "_note": "v1 CUPID evals used (X^T X)^-2 scores; invalid test of CUPID. Kept for the record only.",
+ "pour_screws_into_funnel": {"base": "eval:2490", "random": "eval:2508", "cupid": "eval:2617"},
+ "place_loaded_boxes_in_container_bimanual": {"base": "eval:2489", "random": "eval:2503", "cupid": "eval:2581"},
+ "clamp_electrical_component": {"base": "eval:2504", "random": "eval:2505", "cupid": "eval:2578"}
+}

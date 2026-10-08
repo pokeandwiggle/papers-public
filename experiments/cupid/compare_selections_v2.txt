@@ -1,0 +1,21 @@
+== pour_screws_into_funnel: keep 154/308, overlap cupid∩random 85 (chance 77)
+  all    distinct placements 284  placement entropy 5.620  mean duration 14.3s  ok 24
+  random distinct placements 147  placement entropy 4.971  mean duration 14.1s  ok 11
+  cupid  distinct placements 149  placement entropy 4.992  mean duration 14.2s  ok 13
+  eval base   eval:2490: {'failed:pick_up_container_with_screws': 10, 'failed:pour_screws_into_funnel': 10, 'success': 9, 'failed:place_container_back_on_designated_area': 1}
+  eval random eval:2508: {'success': 16, 'failed:pick_up_container_with_screws': 10, 'failed:pour_screws_into_funnel': 4}
+  eval cupid  eval:2754: {'failed:pour_screws_into_funnel': 8, 'failed:pick_up_container_with_screws': 8, 'success': 13, 'failed:place_container_back_on_designated_area': 1}
+== place_loaded_boxes_in_container_bimanual: keep 176/352, overlap cupid∩random 84 (chance 88)
+  all    distinct placements 300  placement entropy 5.643  mean duration 42.3s  ok 53
+  random distinct placements 159  placement entropy 5.031  mean duration 42.2s  ok 26
+  cupid  distinct placements 160  placement entropy 5.039  mean duration 42.2s  ok 23
+  eval base   eval:2489: {'success': 22, 'failed:place_box_in_container': 7, 'failed:pick_box_from_table': 1}
+  eval random eval:2503: {'success': 18, 'failed:place_box_in_container': 8, 'failed:pick_box_from_table': 4}
+  eval cupid  eval:2756: {'failed:place_box_in_container': 22, 'failed:pick_box_from_table': 1, 'success': 7}
+== clamp_electrical_component: keep 229/458, overlap cupid∩random 109 (chance 115)
+  all    distinct placements 324  placement entropy 5.662  mean duration 42.6s  ok 182
+  random distinct placements 189  placement entropy 5.174  mean duration 42.6s  ok 96
+  cupid  distinct placements 185  placement entropy 5.144  mean duration 43.0s  ok 87
+  eval base   eval:2504: {'failed:place_pcb_in_clamp': 23, 'failed:pick_pcb_from_table': 4, 'failed:tighten_clamp': 2, 'success': 1}
+  eval random eval:2505: {'failed:place_pcb_in_clamp': 27, 'failed:pick_pcb_from_table': 3}
+  eval cupid  eval:2757: {'failed:tighten_clamp': 4, 'failed:place_pcb_in_clamp': 25, 'success': 1}
