@@ -358,6 +358,10 @@ def main() -> None:
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    elif preset.get("model") == "maniflow":
+        from paw_baseline.maniflow import configuration_maniflow  # noqa: F401
+    elif preset.get("model") == "diffusion_ema":
+        from paw_baseline.diffusion_ema import configuration_diffusion_ema  # noqa: F401
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None

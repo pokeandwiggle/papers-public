@@ -34,6 +34,8 @@ def test_presets_cover_all_models():
     assert presets == [
         "act",
         "diffusion",
+        "diffusion_ema",
+        "maniflow",
         "multi_task_dit",
         "pi05",
         "smolvla",

@@ -28,12 +28,13 @@ def training_compilation(model: str | None):
 
 @contextmanager
 def training_policy_precision(trainer, model: str | None):
-    """Keep Diffusion FP32 matmuls at highest precision after trainer setup.
+    """Keep Diffusion and ManiFlow FP32 matmuls at highest precision after trainer setup.
 
     LeRobot enables TF32 before calling its policy factory. Apply the precision
     after that setup and before the first lazy compiled forward/backward.
+    ManiFlow shares this setting so its comparison with Diffusion is matched.
     """
-    if model != "diffusion":
+    if model not in ("diffusion", "diffusion_ema", "maniflow"):
         yield
         return
     import torch

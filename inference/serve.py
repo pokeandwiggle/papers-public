@@ -130,6 +130,7 @@ class BaselinePolicyServer(PolicyServer):
         native_config = load_policy_config(checkpoint)
         if compile_model is None and config["type"] in {
             "diffusion",
+            "diffusion_ema",
             "paw_pi05",
             "pi05",
             "smolvla",
@@ -147,7 +148,7 @@ class BaselinePolicyServer(PolicyServer):
                 native_config.compile_mode = compile_mode
             elif config["type"] in {"paw_pi05", "pi05"}:
                 native_config.compile_mode = "max-autotune"
-            elif config["type"] == "diffusion":
+            elif config["type"] in ("diffusion", "diffusion_ema"):
                 native_config.compile_mode = "default"
             logger.info(
                 "Enabling native torch.compile (%s)", native_config.compile_mode
@@ -186,21 +187,26 @@ class BaselinePolicyServer(PolicyServer):
         from lerobot.policies import get_policy_class, make_pre_post_processors
 
         policy_class = get_policy_class(config["type"])
-        if config["type"] == "diffusion":
+        if config["type"] in ("diffusion", "diffusion_ema"):
             # Native compile wraps U-Net and changes checkpoint keys (_orig_mod).
             # Load strictly with the saved structure before changing serving mode.
+            # Diffusion with EMA samples with its eager EMA copy; compile that one.
             saved_compiled = config.get("compile_model", False)
             native_config.compile_model = saved_compiled
             self._policy = policy_class.from_pretrained(
                 checkpoint, config=native_config, strict=True
             )
-            unet = self._policy.diffusion.unet
-            if compiled and not saved_compiled:
-                self._policy.diffusion.unet = torch.compile(
-                    unet, mode=native_config.compile_mode
-                )
-            elif saved_compiled and not compiled:
-                self._policy.diffusion.unet = unet._orig_mod
+            holder = (
+                self._policy.inference_diffusion()
+                if hasattr(self._policy, "inference_diffusion")
+                else self._policy.diffusion
+            )
+            unet = holder.unet
+            unet_compiled = hasattr(unet, "_orig_mod")
+            if compiled and not unet_compiled:
+                holder.unet = torch.compile(unet, mode=native_config.compile_mode)
+            elif unet_compiled and not compiled:
+                holder.unet = unet._orig_mod
             native_config.compile_model = compiled
         else:
             self._policy = policy_class.from_pretrained(

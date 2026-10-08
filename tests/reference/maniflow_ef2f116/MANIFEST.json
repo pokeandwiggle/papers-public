@@ -1,0 +1,70 @@
+{
+  "repository": "https://github.com/geyan21/ManiFlow_Policy",
+  "commit": "ef2f116f1f90163ed36e657b8c5503740bb468af",
+  "license": "MIT (see LICENSE)",
+  "files": {
+    "maniflow/model/diffusion/ditx.py": {
+      "upstream_path": "ManiFlow/maniflow/model/diffusion/ditx.py",
+      "sha256": "43ea8d5e4ddf07db147710261b3593808b8e3c0a6d3a0a56966512e94270d1e9"
+    },
+    "maniflow/model/diffusion/ditx_block.py": {
+      "upstream_path": "ManiFlow/maniflow/model/diffusion/ditx_block.py",
+      "sha256": "563d6bb927d0f2a1b82bcda95ae9ffb2b2dba0d66bded5f832d8b00ce69721b6"
+    },
+    "maniflow/model/diffusion/positional_embedding.py": {
+      "upstream_path": "ManiFlow/maniflow/model/diffusion/positional_embedding.py",
+      "sha256": "2266c75ecc9c9ac8ca126839d39a7bafbdd7af8800d6de903f66815e64cc366c"
+    },
+    "maniflow/model/diffusion/ema_model.py": {
+      "upstream_path": "ManiFlow/maniflow/model/diffusion/ema_model.py",
+      "sha256": "f683be124722abe0703e2cf003566ab2d446783383cdcd5202063e20148ae467"
+    },
+    "maniflow/policy/maniflow_image_policy.py": {
+      "upstream_path": "ManiFlow/maniflow/policy/maniflow_image_policy.py",
+      "sha256": "fe21cda24b9382d65eedbdf43c41bb5dd76bce2420dc65855dde57000f8d8c24"
+    },
+    "maniflow/policy/base_policy.py": {
+      "upstream_path": "ManiFlow/maniflow/policy/base_policy.py",
+      "sha256": "1d3e257984382b8f31b405e7757929149a1e31094385d45f1b4622ef35007253"
+    },
+    "maniflow/model/common/normalizer.py": {
+      "upstream_path": "ManiFlow/maniflow/model/common/normalizer.py",
+      "sha256": "fd81c4711c5408b2fd34407d8e7731652ac47d2fa1f93f7add4996e03c80be74"
+    },
+    "maniflow/model/common/dict_of_tensor_mixin.py": {
+      "upstream_path": "ManiFlow/maniflow/model/common/dict_of_tensor_mixin.py",
+      "sha256": "158b63a244bcfb9aa377206730f5f59778c6aeb9138ff55c76d2c28ec46952d1"
+    },
+    "maniflow/model/common/module_attr_mixin.py": {
+      "upstream_path": "ManiFlow/maniflow/model/common/module_attr_mixin.py",
+      "sha256": "658dececa20f7628960fc1a8db89e4be3693e1bba47f63d1ff8a4faa2d481e45"
+    },
+    "maniflow/model/common/sample_util.py": {
+      "upstream_path": "ManiFlow/maniflow/model/common/sample_util.py",
+      "sha256": "68f5b88900d8616b87ae8ccd62d8ea7b1cdd50bdc7a3628aa389fcb01ac668dd"
+    },
+    "maniflow/common/pytorch_util.py": {
+      "upstream_path": "ManiFlow/maniflow/common/pytorch_util.py",
+      "sha256": "439901ac2b549e5eaab0f152053bd4bf1147f3dd0ee6c8aa69c1f1d0a8f844fe"
+    },
+    "maniflow/common/model_util.py": {
+      "upstream_path": "ManiFlow/maniflow/common/model_util.py",
+      "sha256": "ebf78ed573b7a832047cad2d444fb320e46cb9f15a02e7a424290186733a1427"
+    },
+    "maniflow/model/vision_2d/timm_obs_encoder.py": {
+      "upstream_path": "ManiFlow/maniflow/model/vision_2d/timm_obs_encoder.py",
+      "sha256": "7b4defdb7051025209303621ad5f33a76b6e2c4f7424a475f583b5828926abe0"
+    },
+    "maniflow/model/vision_2d/transformer_obs_encoder.py": {
+      "upstream_path": "ManiFlow/maniflow/model/vision_2d/transformer_obs_encoder.py",
+      "sha256": "eaa484abb9809904dc4c85f18fc517e3d1a0d1c2a5d68fbda445b0a0d7509e73"
+    }
+  },
+  "diffusion_policy_ema_model": {
+    "repository": "https://github.com/real-stanford/diffusion_policy",
+    "commit": "5ba07ac6661db573af695b419a7947ecb704690f",
+    "upstream_path": "diffusion_policy/model/diffusion/ema_model.py",
+    "sha256": "f683be124722abe0703e2cf003566ab2d446783383cdcd5202063e20148ae467",
+    "note": "byte-identical to maniflow/model/diffusion/ema_model.py"
+  }
+}

@@ -114,11 +114,16 @@ def load_policy_config(checkpoint: Path):
     import lerobot.policies  # noqa: F401 — registers native configuration types.
     from lerobot.configs.policies import PreTrainedConfig
 
-    if json.loads((checkpoint / "config.json").read_text())["type"] == "paw_pi05":
+    native_type = json.loads((checkpoint / "config.json").read_text())["type"]
+    if native_type == "paw_pi05":
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    elif native_type == "maniflow":
+        from paw_baseline.maniflow import configuration_maniflow  # noqa: F401
+    elif native_type == "diffusion_ema":
+        from paw_baseline.diffusion_ema import configuration_diffusion_ema  # noqa: F401
 
     config = PreTrainedConfig.from_pretrained(checkpoint)
     path = checkpoint / INFERENCE_PATH
