@@ -1,0 +1,20 @@
+{
+  "model": "florence_vla",
+  "train_all_episodes": true,
+  "notes": "DSD-BIN: Florence-2-Base discrete-token VLA (public VLM weights, no robotics pretraining) with parallel decoding; per-step TCP increments decomposed into direction/axis unit vectors and translation/rotation scales before 256-bin tokenization, with small-scale direction-loss down-weighting. Matches florence_bin except the action representation.",
+  "args": [
+    "--batch_size=32",
+    "--num_workers=16",
+    "--steps=40000",
+    "--save_freq=10000",
+    "--dataset.image_transforms.enable=true",
+    "--policy.type=florence_vla",
+    "--policy.action_representation=dsd",
+    "--policy.chunk_size=30",
+    "--policy.n_action_steps=30",
+    "--policy.optimizer_lr=2e-5",
+    "--policy.scheduler_warmup_steps=2000",
+    "--policy.scheduler_decay_steps=40000",
+    "--policy.scheduler_decay_lr=2e-6"
+  ]
+}

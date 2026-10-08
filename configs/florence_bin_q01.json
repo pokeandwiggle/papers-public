@@ -1,0 +1,21 @@
+{
+  "model": "florence_vla",
+  "train_all_episodes": true,
+  "notes": "Paper-literal BIN control for DSD: as florence_bin, but every BIN coordinate is mapped from OpenVLA's 1st/99th percentiles and clipped (florence_bin uses 0.1st/99.9th). Matches florence_dsd otherwise.",
+  "args": [
+    "--batch_size=32",
+    "--num_workers=16",
+    "--steps=40000",
+    "--save_freq=10000",
+    "--dataset.image_transforms.enable=true",
+    "--policy.type=florence_vla",
+    "--policy.action_representation=bin",
+    "--policy.bin_percentiles=1-99",
+    "--policy.chunk_size=30",
+    "--policy.n_action_steps=30",
+    "--policy.optimizer_lr=2e-5",
+    "--policy.scheduler_warmup_steps=2000",
+    "--policy.scheduler_decay_steps=40000",
+    "--policy.scheduler_decay_lr=2e-6"
+  ]
+}

@@ -185,6 +185,20 @@ def require_resume_training_data(checkpoint: Path, manifest: dict) -> None:
         )
 
 
+def florence_stats_arg(params: dict, prepared_root: Path, episodes) -> str:
+    """Fit BIN/DSD increment bounds on the selected training episodes only.
+
+    Every rank computes the same deterministic statistics from the shared view.
+    """
+    if "policy.action_stats" in params.get("overrides", {}):
+        raise ValueError("florence_vla action statistics are fitted by training")
+    from paw_baseline.florence_vla.actions import encode_stats, stats_from_prepared
+
+    stats = stats_from_prepared(prepared_root, list(episodes))
+    print("florence_vla action statistics:", json.dumps(stats))
+    return f"--policy.action_stats={encode_stats(stats)}"
+
+
 def require_requested_device(argv: list[str]) -> None:
     """Fail when explicit CUDA is unavailable instead of accepting CPU fallback."""
     if not any(arg.startswith("--policy.device=cuda") for arg in argv):
@@ -285,6 +299,9 @@ def main() -> None:
             horizon = int(effective.get("policy.chunk_size", "50"))
             prepared = prepare_pi05(prepared, horizon)
 
+    if preset.get("model") == "florence_vla":
+        passthrough.append(florence_stats_arg(args.params, prepared.root, split.train))
+
     data_manifest = training_manifest(
         args.dataset, split, visual_stats_profile=visual_stats_profile
     )
@@ -357,6 +374,11 @@ def main() -> None:
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
+        )
+    if preset.get("model") == "florence_vla":
+        from paw_baseline.florence_vla import (  # noqa: F401
+            configuration_florence_vla,
+            processor_florence_vla,
         )
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)

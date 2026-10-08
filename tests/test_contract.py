@@ -34,10 +34,32 @@ def test_presets_cover_all_models():
     assert presets == [
         "act",
         "diffusion",
+        "florence_bin",
+        "florence_bin_q01",
+        "florence_dsd",
         "multi_task_dit",
         "pi05",
         "smolvla",
     ]
+
+
+def test_florence_presets_differ_only_in_representation():
+    bin_preset = json.loads((BASELINE / "configs" / "florence_bin.json").read_text())
+    dsd_preset = json.loads((BASELINE / "configs" / "florence_dsd.json").read_text())
+    assert bin_preset["model"] == dsd_preset["model"] == "florence_vla"
+    differing = set(bin_preset["args"]) ^ set(dsd_preset["args"])
+    assert differing == {
+        "--policy.action_representation=bin",
+        "--policy.action_representation=dsd",
+    }
+
+
+def test_florence_bin_q01_differs_only_in_percentiles():
+    wide = json.loads((BASELINE / "configs" / "florence_bin.json").read_text())
+    q01 = json.loads((BASELINE / "configs" / "florence_bin_q01.json").read_text())
+    assert wide["model"] == q01["model"]
+    assert set(q01["args"]) - set(wide["args"]) == {"--policy.bin_percentiles=1-99"}
+    assert set(wide["args"]) <= set(q01["args"])
 
 
 def test_multi_task_dit_is_paw_like_flow_matching_preset():
