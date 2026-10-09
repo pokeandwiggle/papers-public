@@ -36,7 +36,9 @@ def test_presets_cover_all_models():
         "diffusion",
         "multi_task_dit",
         "pi05",
+        "smile_smolvla",
         "smolvla",
+        "smolvla_f50_h15",
     ]
 
 

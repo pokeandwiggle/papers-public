@@ -1,0 +1,21 @@
+{
+  "model": "smolvla",
+  "train_all_episodes": true,
+  "action_representation": "delta_rotvec_v1",
+  "notes": "Raw-action SmolVLA control for SMILE: relative TCP deltas (rotation vectors, absolute grippers), F=50 predicted (SmolVLA's native chunk size) and H=15 executed per synchronous refresh, matched to smile_smolvla.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=32",
+    "--policy.chunk_size=50",
+    "--policy.compile_mode=default",
+    "--policy.compile_model=true",
+    "--policy.input_features=null",
+    "--policy.n_action_steps=15",
+    "--policy.path=lerobot/smolvla_base",
+    "--policy.pretrained_revision=c83c3163b8ca9b7e67c509fffd9121e66cb96205",
+    "--policy.use_amp=false",
+    "--save_freq=5000"
+  ],
+  "epochs": 3,
+  "min_steps": 20000
+}

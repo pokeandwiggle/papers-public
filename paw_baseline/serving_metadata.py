@@ -6,11 +6,22 @@ from pathlib import Path
 import numpy as np
 from safetensors.torch import load_file
 
-from paw_baseline.prepare import LAYOUT_NAME, PROVENANCE_PATH
+from paw_baseline.prepare import DELTA_LAYOUT_NAME, LAYOUT_NAME, PROVENANCE_PATH
+from paw_baseline.relative import (
+    ACTION_REPRESENTATION as DELTA_REPRESENTATION,
+)
+from paw_baseline.relative import DELTA_ARM_DIMS, DELTA_DIM
 from paw_baseline.representation import MODEL_ARM_DIMS, MODEL_DIM, ROTATION_CONVENTION
 
 SERVING_METADATA_PATH = Path(".paw/serving.json")
 SERVING_SCHEMA_VERSION = 3
+# Relative-action checkpoints integrate deltas from the commanded pose and
+# ground chunks to start on arrival (synchronous fixed-horizon execution).
+DELTA_SERVING_SCHEMA_VERSION = 5
+
+
+def is_delta_metadata(metadata: dict) -> bool:
+    return metadata.get("action_representation") == DELTA_REPRESENTATION
 
 
 def metadata_from_prepared(prepared_root: Path, *, model: str) -> dict:
@@ -43,6 +54,22 @@ def metadata_from_prepared(prepared_root: Path, *, model: str) -> dict:
         }
     _require_rotation_convention(provenance)
     frozen_arm = provenance.get("frozen_arm")
+    if provenance.get("action_representation") == DELTA_REPRESENTATION:
+        if provenance.get("layout") != DELTA_LAYOUT_NAME:
+            raise RuntimeError("relative-action dataset has an unexpected layout")
+        if frozen_arm not in (None, "left", "right"):
+            raise RuntimeError(f"prepared dataset has invalid frozen_arm {frozen_arm!r}")
+        return {
+            "schema_version": DELTA_SERVING_SCHEMA_VERSION,
+            "layout": DELTA_LAYOUT_NAME,
+            "action_representation": DELTA_REPRESENTATION,
+            "rotation_convention": ROTATION_CONVENTION,
+            "action_dim": DELTA_DIM,
+            "frozen_arm": frozen_arm,
+            "model": model,
+            "dataset_repo_id": provenance["source_repo_id"],
+            "dataset_revision": provenance["source_revision"],
+        }
     if provenance.get("layout") != LAYOUT_NAME:
         raise RuntimeError(
             f"prepared dataset layout is {provenance.get('layout')!r}, expected {LAYOUT_NAME!r}"
@@ -87,7 +114,9 @@ def _normalizer_state_file(checkpoint: Path) -> Path:
     return checkpoint / matches[0]
 
 
-def _squashed_arms(checkpoint: Path) -> set[str]:
+def _squashed_arms(
+    checkpoint: Path, action_dim: int = MODEL_DIM, arm_dims=MODEL_ARM_DIMS
+) -> set[str]:
     """Recognize prepare's deliberate mean +/- 0.5 frozen-arm fingerprint."""
     state_path = _normalizer_state_file(checkpoint)
     if not state_path.exists():
@@ -105,12 +134,12 @@ def _squashed_arms(checkpoint: Path) -> set[str]:
     if missing:
         raise RuntimeError(f"saved unnormalizer lacks action statistics: {missing}")
     values = {key: tensors[key].detach().cpu().numpy() for key in required}
-    if any(value.shape != (MODEL_DIM,) for value in values.values()):
+    if any(value.shape != (action_dim,) for value in values.values()):
         shapes = {key: value.shape for key, value in values.items()}
         raise RuntimeError(f"saved action statistics have unexpected shapes: {shapes}")
 
     result = set()
-    for arm, dims_tuple in MODEL_ARM_DIMS.items():
+    for arm, dims_tuple in arm_dims.items():
         dims = list(dims_tuple)
         mean = values["action.mean"][dims]
         fingerprint = (
@@ -170,11 +199,17 @@ def load_serving_metadata(checkpoint: Path) -> dict:
             raise RuntimeError("PI05 frozen-arm metadata/statistics disagree")
         return metadata
     _require_rotation_convention(metadata)
-    if metadata.get("schema_version") != SERVING_SCHEMA_VERSION:
+    delta = is_delta_metadata(metadata)
+    schema, layout, action_dim = (
+        (DELTA_SERVING_SCHEMA_VERSION, DELTA_LAYOUT_NAME, DELTA_DIM)
+        if delta
+        else (SERVING_SCHEMA_VERSION, LAYOUT_NAME, MODEL_DIM)
+    )
+    if metadata.get("schema_version") != schema:
         raise RuntimeError(
             f"unsupported serving metadata schema: {metadata.get('schema_version')!r}"
         )
-    if metadata.get("layout") != LAYOUT_NAME or metadata.get("action_dim") != MODEL_DIM:
+    if metadata.get("layout") != layout or metadata.get("action_dim") != action_dim:
         raise RuntimeError(
             f"serving metadata layout mismatch: {metadata.get('layout')!r} / {metadata.get('action_dim')!r}"
         )
@@ -182,7 +217,9 @@ def load_serving_metadata(checkpoint: Path) -> dict:
     if frozen_arm not in (None, "left", "right"):
         raise RuntimeError(f"invalid checkpoint frozen_arm {frozen_arm!r}")
     expected = set() if frozen_arm is None else {frozen_arm}
-    derived = _squashed_arms(checkpoint)
+    derived = _squashed_arms(
+        checkpoint, action_dim, DELTA_ARM_DIMS if delta else MODEL_ARM_DIMS
+    )
     if derived != expected:
         raise RuntimeError(
             f"frozen-arm metadata/statistics disagree: metadata={frozen_arm!r}, stats={sorted(derived)}"

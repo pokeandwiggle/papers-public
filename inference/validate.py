@@ -21,12 +21,19 @@ import numpy as np
 import pyarrow.parquet as pq
 from paw_baseline.layout import FPS, GRIPPER_MAX_WIDTH_M
 from paw_baseline.prepare import VIDEO_BACKEND
+from paw_baseline.relative import (
+    ACTION_REPRESENTATION as DELTA_REPRESENTATION,
+)
+from paw_baseline.relative import integrate_deltas
 from paw_baseline.representation import decode_model, physical_bounds
-from paw_baseline.serving_metadata import load_serving_metadata
+from paw_baseline.serving_metadata import is_delta_metadata, load_serving_metadata
 from paw_baseline.variant import load_policy_config
 from paw_policy_toolkit.policy_service import (
     ActionChunk,
+    CartesianAction,
+    CartesianCommand,
     CartesianState,
+    GripperCommand,
     ClientMessage,
     ConfigureRequest,
     GripperState,
@@ -312,17 +319,33 @@ def _load_episode_meta(root: Path) -> list[dict]:
 
 
 def _episode_actions(root: Path, episode: dict) -> np.ndarray:
+    """Absolute train-order commands (T, 16) of one prepared episode."""
     path = (
         root
         / f"data/chunk-{episode['data/chunk_index']:03d}/file-{episode['data/file_index']:03d}.parquet"
     )
-    table = pq.read_table(path, columns=["episode_index", "frame_index", "action"])
+    table = pq.read_table(
+        path, columns=["episode_index", "frame_index", "action", "observation.state"]
+    )
     mask = np.asarray(table["episode_index"]) == episode["episode_index"]
     order = np.argsort(np.asarray(table["frame_index"])[mask])
     actions = np.asarray(table["action"].combine_chunks().flatten()).reshape(
         len(table), -1
     )[mask][order]
+    if _is_delta_root(root):
+        # Frame 0 is relative to the measured pose, later frames to the last command.
+        states = np.asarray(
+            table["observation.state"].combine_chunks().flatten()
+        ).reshape(len(table), -1)[mask][order]
+        return integrate_deltas(decode_model(states[0]), actions)
     return _prepared_decoder(root)(actions).astype(np.float64)
+
+
+def _is_delta_root(root: Path) -> bool:
+    from paw_baseline.prepare import PROVENANCE_PATH
+
+    stamp = json.loads((root / PROVENANCE_PATH).read_text())
+    return stamp.get("action_representation") == DELTA_REPRESENTATION
 
 
 def _prepared_decoder(root: Path):
@@ -342,7 +365,7 @@ def _action_bbox(root: Path) -> tuple[np.ndarray, np.ndarray]:
     from paw_baseline.prepare import PROVENANCE_PATH
 
     stamp = json.loads((root / PROVENANCE_PATH).read_text())
-    if "pi05" in stamp:
+    if "pi05" in stamp or stamp.get("action_representation") == DELTA_REPRESENTATION:
         bounds = stamp["physical_action_bounds"]
         return np.asarray(bounds["min"]), np.asarray(bounds["max"])
     stats = json.loads((root / "meta/stats.json").read_text())["action"]
@@ -376,9 +399,27 @@ def _pose(vec7: np.ndarray) -> Pose:
     )
 
 
+def _held_command(command: np.ndarray) -> CartesianAction:
+    """One train-order flat-16 command as the robot reports scheduled motion."""
+    return CartesianAction(
+        arms=[
+            CartesianCommand(target_pose=_pose(command[0:7])),
+            CartesianCommand(target_pose=_pose(command[8:15])),
+        ],
+        grippers=[
+            GripperCommand(target_width=float(command[7])),
+            GripperCommand(target_width=float(command[15])),
+        ],
+    )
+
+
 def _build_observation(
-    state: np.ndarray, images: dict[str, np.ndarray], capture_time_ns: int
+    state: np.ndarray,
+    images: dict[str, np.ndarray],
+    capture_time_ns: int,
+    previous: np.ndarray | None = None,
 ) -> Observation:
+    """A chunk request; ``previous`` is the held command a synchronous robot reports."""
     observation = Observation(
         capture_time_ns=capture_time_ns,
         chunk_requested=True,
@@ -387,6 +428,8 @@ def _build_observation(
         gripper_left=GripperState(width=float(state[7])),
         gripper_right=GripperState(width=float(state[15])),
     )
+    if previous is not None and np.isfinite(previous).all():
+        observation.replaceable_actions.append(_held_command(previous))
     for key, image in images.items():
         slot = key.removeprefix("observation.images.")
         getattr(observation, slot).CopyFrom(RgbFrame(data=_encode_jpeg(image)))
@@ -487,6 +530,10 @@ def dataset_probes(
                     ).astype(np.float64),
                     "images": {key: item[key].numpy() for key in camera_keys},
                     "truth": actions[frame : frame + horizon],
+                    # The command held when the probe's chunk was requested.
+                    "previous": actions[frame - 1]
+                    if frame > 0
+                    else np.full(actions.shape[1], np.nan),
                 }
             )
     if not samples:
@@ -518,6 +565,7 @@ def make_validation_bundle(root: Path, config: dict, holdout: set[int]) -> bytes
     for i, sample in enumerate(samples):
         arrays[f"state_{i}"] = sample["state"]
         arrays[f"truth_{i}"] = sample["truth"]
+        arrays[f"previous_{i}"] = sample.get("previous", np.full(16, np.nan))
         arrays.update(
             {f"image_{i}_{j}": sample["images"][key] for j, key in enumerate(cameras)}
         )
@@ -552,6 +600,9 @@ def load_validation_bundle(
                 "probe": probe,
                 "state": bundle[f"state_{i}"],
                 "truth": bundle[f"truth_{i}"],
+                "previous": bundle[f"previous_{i}"]
+                if f"previous_{i}" in bundle
+                else None,
                 "images": {
                     key: bundle[f"image_{i}_{j}"] for j, key in enumerate(camera_keys)
                 },
@@ -614,6 +665,7 @@ def main() -> None:
     config = json.loads((checkpoint / "config.json").read_text())
     serving_metadata = load_serving_metadata(checkpoint)
     frozen_arm = serving_metadata["frozen_arm"]
+    relative_actions = is_delta_metadata(serving_metadata)
     native_action_steps = config["n_action_steps"]
     horizon = load_policy_config(checkpoint).n_action_steps
     replan_budget_s = horizon / FPS / 2
@@ -665,7 +717,12 @@ def main() -> None:
         state = sample["state"]
         images = sample["images"]
         capture_time_ns = time.monotonic_ns()
-        observation = _build_observation(state, images, capture_time_ns)
+        observation = _build_observation(
+            state,
+            images,
+            capture_time_ns,
+            sample.get("previous") if relative_actions else None,
+        )
 
         chunk, latency_s = _request_chunk(stub, observation, args.timeout)
         rows = chunk_to_train_rows(chunk)

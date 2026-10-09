@@ -21,13 +21,15 @@ from paw_baseline.layout import (
     GRIPPER_MAX_WIDTH_M,
     PAW_DIM,
     STATE_KEY_DIMS,
+    TRAIN_FROM_WIRE,
     TRAIN_GRIP_DIMS,
     TRAIN_QUAT_SLICES,
     WIRE_FROM_TRAIN,
     pin_frozen_arm,
 )
+from paw_baseline.relative import DELTA_DIM, integrate_deltas
 from paw_baseline.representation import MODEL_DIM, decode_model, encode_model
-from paw_baseline.serving_metadata import load_serving_metadata
+from paw_baseline.serving_metadata import is_delta_metadata, load_serving_metadata
 from paw_baseline.variant import load_policy_config
 from paw_policy_toolkit import policy_service as ps
 from paw_policy_toolkit.policy_service import ConfigureRequest, ObservationRequirements
@@ -52,6 +54,47 @@ def _fold_state(observation: dict, encoder=encode_model) -> np.ndarray:
         for key, dim in STATE_KEY_DIMS
     ]
     return encoder(np.concatenate(parts, axis=1))
+
+
+def _physical_state(observation: dict) -> np.ndarray:
+    """Measured train-order flat-16 state from the per-key sub-features."""
+    return np.concatenate(
+        [
+            np.asarray(observation[key], dtype=np.float64).reshape(dim)
+            for key, dim in STATE_KEY_DIMS
+        ]
+    )
+
+
+def command_reference(observation: dict) -> tuple[np.ndarray, str]:
+    """Train-order pose the robot is commanded to hold when a new chunk starts.
+
+    Relative actions were stored against the previous command, so integration
+    starts from the robot's current target as the robot reports it: its
+    scheduled motion (in synchronous execution, the held last command), else
+    its desired TCP targets when supplied. Before the episode's first dispatch
+    (as for training frame 0) or while another source drives the arm, the
+    measured pose is the reference. A server-side record of emitted chunks is
+    not used: the robot may preview a chunk without executing it.
+    """
+    measured = _physical_state(observation)
+    if observation["actions_discarded"]:
+        return measured, "measured"
+    committed = np.asarray(observation.get("committed_actions", np.zeros((1, 0, PAW_DIM))))
+    if committed.ndim == 3 and committed.shape[1] > 0:
+        return committed[0, -1, list(TRAIN_FROM_WIRE)].astype(np.float64), "committed"
+    replaceable = np.asarray(
+        observation.get("replaceable_actions", np.zeros((1, 0, PAW_DIM)))
+    )
+    if replaceable.ndim == 3 and replaceable.shape[1] > 0:
+        return replaceable[0, 0, list(TRAIN_FROM_WIRE)].astype(np.float64), "replaceable"
+    desired = [f"observation.state.desired_tcp_pose_{arm}" for arm in ("left", "right")]
+    if all(key in observation for key in desired):
+        reference = measured.copy()
+        reference[0:7] = np.asarray(observation[desired[0]], dtype=np.float64).reshape(7)
+        reference[8:15] = np.asarray(observation[desired[1]], dtype=np.float64).reshape(7)
+        return reference, "desired"
+    return measured, "measured"
 
 
 def _emit_hygiene(chunk: np.ndarray) -> np.ndarray:
@@ -110,6 +153,8 @@ class BaselinePolicyServer(PolicyServer):
         self._loaded = False
         self.stop_event = Event()
         self._configured = False
+        self._delta = False
+        self._reference_source: str | None = None
 
     def _load(self) -> None:
         checkpoint = self._checkpoint
@@ -120,6 +165,7 @@ class BaselinePolicyServer(PolicyServer):
         config = json.loads((checkpoint / "config.json").read_text())
         serving_metadata = load_serving_metadata(checkpoint)
         self._frozen_arm = serving_metadata["frozen_arm"]
+        self._delta = is_delta_metadata(serving_metadata)
         self._representation = None
         if "pi05" in serving_metadata:
             from paw_baseline.pi05.geometry import Pi05Representation
@@ -132,6 +178,7 @@ class BaselinePolicyServer(PolicyServer):
             "diffusion",
             "paw_pi05",
             "pi05",
+            "smile_smolvla",
             "smolvla",
         }:
             compile_model = True
@@ -161,9 +208,10 @@ class BaselinePolicyServer(PolicyServer):
                 f"checkpoint expects observation.state {state_shape}, not [{MODEL_DIM}]"
             )
         action_shape = config["output_features"]["action"]["shape"]
-        if action_shape != [MODEL_DIM]:
+        expected_action = DELTA_DIM if self._delta else MODEL_DIM
+        if action_shape != [expected_action]:
             raise RuntimeError(
-                f"checkpoint emits action {action_shape}, not [{MODEL_DIM}]"
+                f"checkpoint emits action {action_shape}, not [{expected_action}]"
             )
 
         # (camera key, wire slot, height, width) per VISUAL input; lerobot
@@ -348,6 +396,7 @@ class BaselinePolicyServer(PolicyServer):
         if not self._configured:
             raise RuntimeError("Run requires successful Configure")
         self._policy.reset()
+        self._reference_source = None
 
     def on_observation(self, observation: dict) -> None:
         # The baseline models are markovian per chunk: frames the client is
@@ -372,15 +421,24 @@ class BaselinePolicyServer(PolicyServer):
                 )
             batch[key] = image
         prediction = self._predict(batch)
-        decoded = (
-            decode_model(prediction)
-            if self._representation is None
-            else self._representation.decode(prediction)
-        )
-        chunk = _emit_hygiene(decoded)
+        delta = getattr(self, "_delta", False)
+        if delta:
+            reference, source = command_reference(observation)
+            if source != self._reference_source:
+                logger.info("relative actions integrate from the %s pose", source)
+                self._reference_source = source
+            decoded = integrate_deltas(reference, prediction[0])[None]
+        elif self._representation is None:
+            decoded = decode_model(prediction)
+        else:
+            decoded = self._representation.decode(prediction)
+        chunk = _emit_hygiene(decoded.astype(np.float32))
         wire = np.ascontiguousarray(chunk[:, :, WIRE_FROM_TRAIN])
         if self._frozen_arm is not None:
             wire = pin_frozen_arm(wire, observation, self._frozen_arm)
+        # The robot matches a chunk to its outstanding request by this echo; an
+        # unmatched chunk (e.g. target 0) leaves the request open and stalls a
+        # synchronous runtime after its first chunk.
         self.emit_chunk(
             {"action": wire},
             observation["capture_time_ns"],

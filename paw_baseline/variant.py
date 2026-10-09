@@ -114,10 +114,16 @@ def load_policy_config(checkpoint: Path):
     import lerobot.policies  # noqa: F401 — registers native configuration types.
     from lerobot.configs.policies import PreTrainedConfig
 
-    if json.loads((checkpoint / "config.json").read_text())["type"] == "paw_pi05":
+    policy_type = json.loads((checkpoint / "config.json").read_text())["type"]
+    if policy_type == "paw_pi05":
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
+        )
+    if policy_type == "smile_smolvla":
+        from paw_baseline.smile import (  # noqa: F401
+            configuration_smile_smolvla,
+            processor_smile_smolvla,
         )
 
     config = PreTrainedConfig.from_pretrained(checkpoint)

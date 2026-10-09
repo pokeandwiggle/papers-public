@@ -1,0 +1,23 @@
+{
+  "model": "smile_smolvla",
+  "train_all_episodes": true,
+  "action_representation": "delta_rotvec_v1",
+  "notes": "SMILE-SmolVLA: smolvla_base denoising K=8 cubic B-spline coefficients of cumulative relative trajectories, decoded to F=50 relative actions, H=15 executed per synchronous refresh. All SmolVLA training settings match smolvla_f50_h15.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=32",
+    "--policy.type=smile_smolvla",
+    "--policy.base_repo=lerobot/smolvla_base",
+    "--policy.base_revision=c83c3163b8ca9b7e67c509fffd9121e66cb96205",
+    "--policy.chunk_size=50",
+    "--policy.compile_mode=default",
+    "--policy.compile_model=true",
+    "--policy.n_action_steps=15",
+    "--policy.num_control_points=8",
+    "--policy.spline_degree=3",
+    "--policy.use_amp=false",
+    "--save_freq=5000"
+  ],
+  "epochs": 3,
+  "min_steps": 20000
+}

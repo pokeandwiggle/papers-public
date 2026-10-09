@@ -26,6 +26,15 @@ from paw_baseline.layout import (
     STATE_KEY_DIMS,
     TRAIN_GRIP_DIMS,
 )
+from paw_baseline.relative import (
+    ACTION_REPRESENTATION as DELTA_REPRESENTATION,
+)
+from paw_baseline.relative import (
+    DELTA_ARM_DIMS,
+    DELTA_DIM,
+    delta_names,
+    encode_deltas,
+)
 from paw_baseline.representation import (
     MODEL_ARM_DIMS,
     MODEL_DIM,
@@ -44,6 +53,13 @@ VIDEO_BACKEND = "pyav"
 
 PREPARE_VERSION = 6
 LAYOUT_NAME = "flat20-rot6d-v5"
+ABSOLUTE_REPRESENTATION = "absolute_rot6d"
+# Same 20D state; actions are relative TCP deltas with rotation vectors.
+DELTA_LAYOUT_NAME = f"{LAYOUT_NAME}-{DELTA_REPRESENTATION}"
+LAYOUTS = {
+    ABSOLUTE_REPRESENTATION: LAYOUT_NAME,
+    DELTA_REPRESENTATION: DELTA_LAYOUT_NAME,
+}
 PROVENANCE_PATH = ".paw/prepare.json"
 
 GRIPPER_TOL_M = 1e-6
@@ -99,11 +115,14 @@ def prepare_dataset(
     cache_root: Path | None = None,
     visual_stats_profile: str = VISUAL_STATS_DATASET,
     normalization_episodes: list[int] | tuple[int, ...] | None = None,
+    action_representation: str = ABSOLUTE_REPRESENTATION,
 ) -> PreparedDataset:
     """Return the prepared flat-20 view of ``source``, building it if absent.
 
     ``source`` is an HF dataset repo id (downloaded at ``revision``) or a
     local export directory (tests, pre-downloaded data).
+    ``action_representation`` selects absolute 20D model actions (default) or
+    14D relative deltas with rotation vectors (paw_baseline.relative).
     """
     if visual_stats_profile not in (
         VISUAL_STATS_DATASET,
@@ -111,6 +130,9 @@ def prepare_dataset(
         VISUAL_STATS_OPENAI_CLIP,
     ):
         raise ValueError(f"unknown visual stats profile {visual_stats_profile!r}")
+    if action_representation not in LAYOUTS:
+        raise ValueError(f"unknown action representation {action_representation!r}")
+    layout = LAYOUTS[action_representation]
 
     source_dir, repo_id, resolved = _resolve_source(source, revision)
     info = json.loads((source_dir / "meta/info.json").read_text())
@@ -146,7 +168,7 @@ def prepare_dataset(
         + hashlib.sha256(json.dumps(fit_episodes).encode()).hexdigest()[:12]
     )
     root = (cache_root or default_cache_root()) / (
-        f"{repo_id.replace('/', '--')}-{resolved[:12]}-p{PREPARE_VERSION}-{metadata_digest[:12]}-{LAYOUT_NAME}{profile_suffix}{fit_suffix}"
+        f"{repo_id.replace('/', '--')}-{resolved[:12]}-p{PREPARE_VERSION}-{metadata_digest[:12]}-{layout}{profile_suffix}{fit_suffix}"
     )
     provenance = root / PROVENANCE_PATH
     if provenance.exists():
@@ -157,6 +179,8 @@ def prepare_dataset(
             and stamp.get("visual_stats_profile", VISUAL_STATS_DATASET)
             == visual_stats_profile
             and stamp["normalization_episode_indices"] == list(fit_episodes)
+            and stamp.get("action_representation", ABSOLUTE_REPRESENTATION)
+            == action_representation
         ):
             return PreparedDataset(root, repo_id, resolved)
         raise RuntimeError(
@@ -177,7 +201,15 @@ def prepare_dataset(
         )
     if frozen_arm is not None:
         _freeze_arm_data(root, state, action, frozen_arm, fit_mask=fit_mask)
-    state, action = _encode_model_data(root, state, action)
+    physical_actions = action[fit_mask]
+    action_bounds = {
+        "min": physical_actions.astype(np.float64).min(axis=0).tolist(),
+        "max": physical_actions.astype(np.float64).max(axis=0).tolist(),
+    }
+    if action_representation == DELTA_REPRESENTATION:
+        state, action = _encode_delta_data(root, frozen_arm)
+    else:
+        state, action = _encode_model_data(root, state, action)
     _write_stats(
         source_dir,
         root,
@@ -187,17 +219,25 @@ def prepare_dataset(
         visual_stats_profile=visual_stats_profile,
         fit_episodes=fit_episodes,
         fit_all=fit_all,
+        action_representation=action_representation,
     )
-    _write_info(root, info)
+    _write_info(root, info, action_representation=action_representation)
     _copy_meta(source_dir, root)
     _link_videos(source_dir, root)
 
+    extra = (
+        {"physical_action_bounds": action_bounds}
+        if action_representation == DELTA_REPRESENTATION
+        else {}
+    )
     provenance.parent.mkdir(parents=True, exist_ok=True)
     provenance.write_text(
         json.dumps(
             {
                 "prepare_version": PREPARE_VERSION,
-                "layout": LAYOUT_NAME,
+                "layout": layout,
+                "action_representation": action_representation,
+                **extra,
                 "rotation_convention": ROTATION_CONVENTION,
                 "visual_stats_profile": visual_stats_profile,
                 "normalization_episode_indices": list(fit_episodes),
@@ -443,6 +483,55 @@ def _encode_model_data(
     return encode_model(state), encode_model(action)
 
 
+def _encode_delta_data(
+    root: Path, frozen_arm: str | None
+) -> tuple[np.ndarray, np.ndarray]:
+    """Encode 20D model state and per-frame 14D relative actions per episode.
+
+    Deltas need each episode's consecutive commands, so an episode must not
+    span data files. A frozen arm holds its pose: its pose deltas are zero.
+    """
+    states, actions = [], []
+    seen: set[int] = set()
+    for path in sorted((root / "data").glob("chunk-*/file-*.parquet")):
+        table = pq.read_table(path)
+        episodes = np.asarray(table["episode_index"])
+        frames = np.asarray(table["frame_index"])
+        physical = {
+            key: np.asarray(table[key].combine_chunks().flatten()).reshape(-1, PAW_DIM)
+            for key in ("observation.state", "action")
+        }
+        deltas = np.zeros((len(table), DELTA_DIM), dtype=np.float64)
+        for episode in np.unique(episodes):
+            if int(episode) in seen:
+                raise RuntimeError(f"episode {episode} spans data files")
+            seen.add(int(episode))
+            rows = np.flatnonzero(episodes == episode)
+            rows = rows[np.argsort(frames[rows])]
+            if not np.array_equal(frames[rows], np.arange(len(rows))):
+                raise RuntimeError(f"episode {episode} frames are not contiguous")
+            deltas[rows] = encode_deltas(
+                physical["observation.state"][rows], physical["action"][rows]
+            )
+        if frozen_arm is not None:
+            pose_dims = list(DELTA_ARM_DIMS[frozen_arm][:6])
+            deltas[:, pose_dims] = 0.0
+        state = encode_model(physical["observation.state"])
+        deltas = deltas.astype(np.float32)
+        table = table.set_column(
+            table.column_names.index("observation.state"),
+            "observation.state",
+            _fixed_list(state),
+        )
+        table = table.set_column(
+            table.column_names.index("action"), "action", _fixed_list(deltas)
+        )
+        pq.write_table(table, path)
+        states.append(state)
+        actions.append(deltas)
+    return np.concatenate(states), np.concatenate(actions)
+
+
 def _vector_stats(values: np.ndarray) -> dict:
     v = values.astype(np.float64)
     stats = {
@@ -457,9 +546,9 @@ def _vector_stats(values: np.ndarray) -> dict:
     return stats
 
 
-def _squash_arm_stats(stats: dict, key: str, arm: str) -> None:
+def _squash_arm_stats(stats: dict, key: str, arm: str, arm_dims=MODEL_ARM_DIMS) -> None:
     """Make a frozen arm normalize to zero and decode zero to its constant."""
-    dims = list(MODEL_ARM_DIMS[arm])
+    dims = list(arm_dims[arm])
     mean = np.asarray(stats[key]["mean"], dtype=np.float64)
     replacements = {
         "min": mean - 0.5,
@@ -487,7 +576,9 @@ def _write_stats(
     visual_stats_profile: str,
     fit_episodes: tuple[int, ...],
     fit_all: bool,
+    action_representation: str = ABSOLUTE_REPRESENTATION,
 ) -> None:
+    delta = action_representation == DELTA_REPRESENTATION
     source_stats = json.loads((source_dir / "meta/stats.json").read_text())
     kept = {
         key: value
@@ -506,7 +597,8 @@ def _write_stats(
         stats.update(selected_visual_stats(source_dir, fit_episodes))
     # Rotation rows have a known domain. Keep them unscaled rather than
     # amplifying almost-constant coordinates with dataset-dependent ranges.
-    for key in ("observation.state", "action"):
+    # Relative rotation-vector actions use ordinary dataset statistics.
+    for key in ("observation.state",) if delta else ("observation.state", "action"):
         for name, value in {
             "mean": 0.0,
             "std": 1.0,
@@ -521,7 +613,12 @@ def _write_stats(
                 stats[key][name][dim] = value
     if frozen_arm is not None:
         _squash_arm_stats(stats, "observation.state", frozen_arm)
-        _squash_arm_stats(stats, "action", frozen_arm)
+        _squash_arm_stats(
+            stats,
+            "action",
+            frozen_arm,
+            DELTA_ARM_DIMS if delta else MODEL_ARM_DIMS,
+        )
     if visual_stats_profile != VISUAL_STATS_DATASET:
         mean, std = (
             (IMAGENET_MEAN, IMAGENET_STD)
@@ -536,8 +633,11 @@ def _write_stats(
     dest.write_text(json.dumps(stats, indent=2) + "\n")
 
 
-def _write_info(root: Path, info: dict) -> None:
+def _write_info(
+    root: Path, info: dict, *, action_representation: str = ABSOLUTE_REPRESENTATION
+) -> None:
     source_features = info["features"]
+    delta = action_representation == DELTA_REPRESENTATION
     features = {
         "observation.state": {
             "dtype": "float32",
@@ -546,8 +646,8 @@ def _write_info(root: Path, info: dict) -> None:
         },
         "action": {
             "dtype": "float32",
-            "shape": [MODEL_DIM],
-            "names": model_names(),
+            "shape": [DELTA_DIM if delta else MODEL_DIM],
+            "names": delta_names() if delta else model_names(),
         },
     }
     for key in ("timestamp", "frame_index", "episode_index", "index", "task_index"):

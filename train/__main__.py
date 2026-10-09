@@ -14,6 +14,7 @@ from paw_baseline.data_selection import (
     training_manifest,
 )
 from paw_baseline.prepare import (
+    ABSOLUTE_REPRESENTATION,
     VIDEO_BACKEND,
     VISUAL_STATS_DATASET,
     VISUAL_STATS_IMAGENET,
@@ -185,6 +186,55 @@ def require_resume_training_data(checkpoint: Path, manifest: dict) -> None:
         )
 
 
+def smile_coefficient_args(
+    prepared_root: Path,
+    train_episodes: tuple[int, ...],
+    effective_args: list[str],
+    overrides: dict,
+) -> list[str]:
+    """Fit SMILE's dataset-level coefficient statistics on the training episodes."""
+    from paw_baseline.smile.bspline import action_stats, coefficient_stats
+    from paw_baseline.smile.configuration_smile_smolvla import SmileSmolVLAConfig
+
+    reserved = {
+        "policy.action_mean",
+        "policy.action_std",
+        "policy.coef_mean",
+        "policy.coef_std",
+        "policy.type",
+    }
+    if reserved.intersection(overrides):
+        raise ValueError(
+            f"SMILE overrides cannot replace {sorted(reserved.intersection(overrides))}"
+        )
+    effective = dict(arg[2:].split("=", 1) for arg in effective_args)
+    defaults = SmileSmolVLAConfig.__dataclass_fields__
+    stats = coefficient_stats(
+        prepared_root,
+        train_episodes,
+        chunk_size=int(effective["policy.chunk_size"]),
+        num_control_points=int(
+            effective.get(
+                "policy.num_control_points", defaults["num_control_points"].default
+            )
+        ),
+        degree=int(
+            effective.get("policy.spline_degree", defaults["spline_degree"].default)
+        ),
+    )
+    print(
+        f"SMILE coefficient statistics fitted on {stats['windows']} eligible chunks "
+        f"(max cumulative rotation {stats['max_cumulative_angle_deg']:.1f} deg)"
+    )
+    actions = action_stats(prepared_root)
+    return [
+        f"--policy.coef_mean={json.dumps(stats['coef_mean'])}",
+        f"--policy.coef_std={json.dumps(stats['coef_std'])}",
+        f"--policy.action_mean={json.dumps(actions['action_mean'])}",
+        f"--policy.action_std={json.dumps(actions['action_std'])}",
+    ]
+
+
 def require_requested_device(argv: list[str]) -> None:
     """Fail when explicit CUDA is unavailable instead of accepting CPU fallback."""
     if not any(arg.startswith("--policy.device=cuda") for arg in argv):
@@ -260,6 +310,9 @@ def main() -> None:
             args.dataset,
             normalization_episodes=split.train,
             visual_stats_profile=visual_stats_profile,
+            action_representation=preset.get(
+                "action_representation", ABSOLUTE_REPRESENTATION
+            ),
         )
         if preset.get("model") == "paw_pi05":
             from paw_baseline.pi05.prepare import prepare_pi05
@@ -284,6 +337,16 @@ def main() -> None:
             )
             horizon = int(effective.get("policy.chunk_size", "50"))
             prepared = prepare_pi05(prepared, horizon)
+
+    if preset.get("model") == "smile_smolvla":
+        passthrough.extend(
+            smile_coefficient_args(
+                prepared.root,
+                split.train,
+                merge_args(preset["args"], passthrough),
+                args.params.get("overrides", {}),
+            )
+        )
 
     data_manifest = training_manifest(
         args.dataset, split, visual_stats_profile=visual_stats_profile
@@ -357,6 +420,11 @@ def main() -> None:
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
+        )
+    if preset.get("model") == "smile_smolvla":
+        from paw_baseline.smile import (  # noqa: F401
+            configuration_smile_smolvla,
+            processor_smile_smolvla,
         )
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
