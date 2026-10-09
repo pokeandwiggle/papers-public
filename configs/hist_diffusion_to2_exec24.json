@@ -1,0 +1,29 @@
+{
+  "model": "hist_diffusion",
+  "epochs": 25,
+  "min_steps": 200000,
+  "train_all_episodes": false,
+  "validation_scoring": true,
+  "notes": "Control for arXiv:2608.15938: Diffusion Policy with short context (2 frames 100 ms apart) and long open-loop execution (24 steps = 0.8 s), prediction fixed at 45 steps = 1.5 s with past-token prediction, 95% random crop (paper Table 4), the paper's U-Net width (down_dims 256/512/1024, Table 5), final checkpoint served with held-out DDIM action MSE logged (5 held-out episodes). Otherwise the diffusion preset's backbone and optimizer.",
+  "args": [
+    "--batch_size=64",
+    "--num_workers=16",
+    "--prefetch_factor=1",
+    "--policy.compile_mode=default",
+    "--policy.crop_is_random=true",
+    "--policy.crop_shape=[243,243]",
+    "--policy.down_dims=[256,512,1024]",
+    "--policy.compile_model=true",
+    "--policy.drop_n_last_frames=0",
+    "--policy.n_obs_steps=2",
+    "--policy.noise_scheduler_type=DDIM",
+    "--policy.num_inference_steps=16",
+    "--policy.num_train_timesteps=100",
+    "--policy.obs_stride=3",
+    "--policy.prediction_steps=45",
+    "--policy.replan_steps=24",
+    "--policy.seam_blend_steps=4",
+    "--policy.type=hist_diffusion",
+    "--save_freq=5000"
+  ]
+}

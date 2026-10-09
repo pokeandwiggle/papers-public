@@ -102,9 +102,15 @@ def merge_args(*groups: list[str]) -> list[str]:
 
 
 def install_checkpoint_metadata_hook(
-    lerobot_train, metadata: dict, write_validation
+    lerobot_train, metadata: dict, write_validation, score=None
 ) -> None:
-    """Stamp every LeRobot checkpoint while its pretrained files are saved."""
+    """Stamp every LeRobot checkpoint while its pretrained files are saved.
+
+    ``score`` (optional) rates the saved policy before the checkpoint is marked
+    complete, as ``score(checkpoint_dir, step, policy, preprocessor, final)``
+    where ``final`` marks the run's last save; LeRobot calls save_checkpoint
+    with keyword arguments on rank zero.
+    """
     original = lerobot_train.save_checkpoint
 
     def save_checkpoint_with_metadata(*args, **kwargs):
@@ -112,6 +118,14 @@ def install_checkpoint_metadata_hook(
         checkpoint_dir = Path(kwargs.get("checkpoint_dir", args[0] if args else ""))
         write_serving_metadata(checkpoint_dir / "pretrained_model", metadata)
         write_validation(checkpoint_dir / "pretrained_model")
+        if score is not None:
+            score(
+                checkpoint_dir,
+                kwargs["step"],
+                kwargs["policy"],
+                kwargs["preprocessor"],
+                kwargs["step"] >= kwargs["cfg"].steps,
+            )
         paw_contract.mark_checkpoint_complete(checkpoint_dir)
         return result
 
@@ -284,6 +298,12 @@ def main() -> None:
             )
             horizon = int(effective.get("policy.chunk_size", "50"))
             prepared = prepare_pi05(prepared, horizon)
+    if preset.get("model") == "attn_diffusion":
+        # In-policy min-max statistics from the training episodes (every rank
+        # computes the same values from the shared prepared view).
+        from paw_baseline.attn_diffusion.stats import override_args, training_statistics
+
+        passthrough.extend(override_args(training_statistics(prepared.root, split.train)))
 
     data_manifest = training_manifest(
         args.dataset, split, visual_stats_profile=visual_stats_profile
@@ -358,6 +378,10 @@ def main() -> None:
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    if preset.get("model") == "hist_diffusion":
+        import paw_baseline.hist_diffusion  # noqa: F401 — registers the policy type.
+    if preset.get("model") == "attn_diffusion":
+        import paw_baseline.attn_diffusion  # noqa: F401 — registers the policy type.
 
     serving_metadata = metadata_from_prepared(prepared.root, model=model)
     validation_bundle = None
@@ -382,7 +406,27 @@ def main() -> None:
 
         final_checkpoint = checkpoint.parent
 
-    install_checkpoint_metadata_hook(lerobot_train, serving_metadata, write_validation)
+    # hist_diffusion: held-out DDIM MSE logged, final step served.
+    # attn_diffusion: keep the 5 lowest-MSE checkpoints and serve the best.
+    score = None
+    selector = None
+    if preset.get("checkpoint_selection") == "val_ddim_mse_top5":
+        from paw_baseline.attn_diffusion.selection import TopKCheckpoints
+
+        score = TopKCheckpoints(prepared.root, holdout).score
+    elif preset.get("validation_scoring"):
+        from paw_baseline.hist_diffusion.checkpoint_selection import (
+            ValidationSelector,
+        )
+
+        selector = ValidationSelector(prepared.root, holdout)
+
+        def score(checkpoint_dir, step, policy, preprocessor, final):
+            selector.score(checkpoint_dir, step, policy, preprocessor)
+
+    install_checkpoint_metadata_hook(
+        lerobot_train, serving_metadata, write_validation, score=score
+    )
 
     distributed_state.wait_for_everyone()
     sys.argv = ["lerobot-train", *lerobot_argv]
@@ -398,6 +442,9 @@ def main() -> None:
     if final_checkpoint is None:
         raise ValueError("training finished without a complete checkpoint")
     checkpoint = (final_checkpoint / "pretrained_model").resolve()
+    selection = None
+    if selector is not None:
+        selection = selector.write(output_dir, checkpoint.parent)
     paw_contract.write_training_result(
         output_dir,
         checkpoint_path=checkpoint.relative_to(output_dir).as_posix(),
@@ -414,6 +461,7 @@ def main() -> None:
         "holdout_episodes": holdout,
         "training_data": data_manifest,
         "checkpoint_dir": str(checkpoint),
+        "validation_scores": None if selection is None else selection,
         "lerobot_argv": lerobot_argv,
         "finished_at": datetime.datetime.now(datetime.UTC).isoformat(),
     }

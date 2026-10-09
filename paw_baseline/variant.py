@@ -114,11 +114,16 @@ def load_policy_config(checkpoint: Path):
     import lerobot.policies  # noqa: F401 — registers native configuration types.
     from lerobot.configs.policies import PreTrainedConfig
 
-    if json.loads((checkpoint / "config.json").read_text())["type"] == "paw_pi05":
+    policy_type = json.loads((checkpoint / "config.json").read_text())["type"]
+    if policy_type == "paw_pi05":
         from paw_baseline.pi05 import (  # noqa: F401
             configuration_paw_pi05,
             processor_paw_pi05,
         )
+    if policy_type == "hist_diffusion":
+        import paw_baseline.hist_diffusion  # noqa: F401 — registers the policy type.
+    if policy_type == "attn_diffusion":
+        import paw_baseline.attn_diffusion  # noqa: F401 — registers the policy type.
 
     config = PreTrainedConfig.from_pretrained(checkpoint)
     path = checkpoint / INFERENCE_PATH

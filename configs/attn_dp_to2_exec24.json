@@ -1,0 +1,20 @@
+{
+  "model": "attn_diffusion",
+  "train_all_episodes": false,
+  "checkpoint_selection": "val_ddim_mse_top5",
+  "notes": "Control for arXiv:2608.15938 with the authors' real-robot architecture: DINOv3 ViT-B/16 double encoder (short range 2, dropout 0.3, encoder LR x0.1) and cross-attention U-Net (256/512/1024), EMA, DDIM-10. Short context (2 frames 100 ms apart), long open-loop execution (24 steps = 0.8 s), fixed 1.5 s prediction with past tokens, per-step delta actions. 200k steps at 12 per GPU x 4 GPUs = 48; 5 held-out episodes; best of the 5 lowest validation-DDIM-MSE checkpoints served.",
+  "args": [
+    "--batch_size=12",
+    "--num_workers=16",
+    "--prefetch_factor=1",
+    "--policy.dtype=bfloat16",
+    "--policy.interpolation_ms=180",
+    "--policy.n_obs_steps=2",
+    "--policy.obs_stride=3",
+    "--policy.prediction_steps=45",
+    "--policy.replan_steps=24",
+    "--policy.type=attn_diffusion",
+    "--save_freq=5000",
+    "--steps=200000"
+  ]
+}

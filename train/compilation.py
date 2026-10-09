@@ -33,7 +33,7 @@ def training_policy_precision(trainer, model: str | None):
     LeRobot enables TF32 before calling its policy factory. Apply the precision
     after that setup and before the first lazy compiled forward/backward.
     """
-    if model != "diffusion":
+    if model not in ("diffusion", "hist_diffusion", "attn_diffusion"):
         yield
         return
     import torch

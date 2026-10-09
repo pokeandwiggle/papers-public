@@ -12,9 +12,18 @@ from train.__main__ import load_preset, select_holdout_episodes
 PRESETS = sorted(
     path.stem for path in (Path(__file__).parents[1] / "configs").glob("*.json")
 )
+# Presets that select checkpoints on held-out episodes (paper replication).
+VALIDATING = (
+    "attn_dp_to2_exec24",
+    "attn_dp_to8_exec6",
+    "hist_diffusion_to2_exec24",
+    "hist_diffusion_to8_exec6",
+)
 
 
-@pytest.mark.parametrize("preset_name", PRESETS)
+@pytest.mark.parametrize(
+    "preset_name", [name for name in PRESETS if name not in VALIDATING]
+)
 def test_preset_uses_every_episode_without_validation(tmp_path, preset_name):
     total = 185
     (tmp_path / "meta").mkdir()
@@ -59,3 +68,20 @@ def test_preset_preserves_explicit_holdout(tmp_path, preset_name):
     )
     assert split.train == (0, 2)
     assert split.holdout == (1,)
+
+
+@pytest.mark.parametrize("preset_name", VALIDATING)
+def test_validating_presets_hold_out_five_spread_episodes(tmp_path, preset_name):
+    total = 185
+    (tmp_path / "meta").mkdir()
+    (tmp_path / "meta/info.json").write_text(json.dumps({"total_episodes": total}))
+    preset = load_preset(preset_name)
+    assert (
+        preset.get("validation_scoring") is True
+        or preset.get("checkpoint_selection") == "val_ddim_mse_top5"
+    )
+    split = resolve_episode_split(
+        tmp_path, {}, default_holdout=select_holdout_episodes(total, preset, False)
+    )
+    assert split.holdout == (0, 46, 92, 138, 184)
+    assert set(split.train) == set(range(total)) - set(split.holdout)
